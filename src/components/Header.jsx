@@ -21,7 +21,6 @@ function Header() {
   const actif = (h) => location.pathname === h
 
   return (
-    <>
       <header style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
         padding: '14px 24px',
@@ -59,8 +58,8 @@ function Header() {
                 transition: 'all 0.2s ease',
                 whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => { if (!actif(l.href)) e.target.style.color = '#fff' }}
-              onMouseLeave={e => { if (!actif(l.href)) e.target.style.color = '#e2e8f0' }}
+              onMouseEnter={e => { if (!actif(l.href)) e.currentTarget.style.color = '#fff' }}
+              onMouseLeave={e => { if (!actif(l.href)) e.currentTarget.style.color = '#e2e8f0' }}
               >
                 {l.nom}
               </Link>
@@ -113,7 +112,6 @@ function Header() {
         </div>
 
       </header>
-    </>
   )
 }
 

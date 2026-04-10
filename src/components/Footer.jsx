@@ -3,7 +3,7 @@ import Logo from './Logo'
 
 // Pied de page Webotix
 function Footer() {
-  const annee = 2025
+  const annee = new Date().getFullYear()
 
   const s = {
     footer: {
@@ -22,7 +22,7 @@ function Footer() {
       marginBottom: '48px',
     },
     titre: {
-      fontFamily: "'Syne', sans-serif",
+      fontFamily: "'Outfit', sans-serif",
       color: '#fff',
       fontWeight: 600,
       fontSize: '0.8rem',

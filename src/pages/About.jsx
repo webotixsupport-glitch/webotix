@@ -237,15 +237,18 @@ function About() {
               }}>qui ?</span>
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
-              {[
-                `Webotix est née en <strong style="color:#0f172a">2025</strong> d'une conviction simple : chaque entreprise mérite une présence digitale qui lui ressemble et qui travaille pour elle.`,
-                `On est une <strong style="color:#0ea5e9">petite agence, et on l'assume fièrement</strong>. Pas de chef de projet fantôme, pas de réunions sans fin. Vous êtes en contact direct avec la personne qui construit votre projet.`,
-                `Notre force ? Comprendre votre activité avant de toucher au code. On pose les bonnes questions, on comprend vos enjeux, et on vous livre quelque chose qui <strong style="color:#0f172a">a du sens pour votre business</strong>.`,
-                `Sites web, applications, automatisations — on maîtrise les trois. Et on adore les projets qui combinent tout ça.`,
-              ].map((txt, i) => (
-                <p key={i} style={{ color: '#475569', fontSize: '0.97rem', lineHeight: 1.8 }}
-                  dangerouslySetInnerHTML={{ __html: txt }} />
-              ))}
+              <p style={{ color: '#475569', fontSize: '0.97rem', lineHeight: 1.8 }}>
+                Webotix est née en <strong style={{ color: '#0f172a' }}>2025</strong> d'une conviction simple : chaque entreprise mérite une présence digitale qui lui ressemble et qui travaille pour elle.
+              </p>
+              <p style={{ color: '#475569', fontSize: '0.97rem', lineHeight: 1.8 }}>
+                On est une <strong style={{ color: '#0ea5e9' }}>petite agence, et on l'assume fièrement</strong>. Pas de chef de projet fantôme, pas de réunions sans fin. Vous êtes en contact direct avec la personne qui construit votre projet.
+              </p>
+              <p style={{ color: '#475569', fontSize: '0.97rem', lineHeight: 1.8 }}>
+                Notre force ? Comprendre votre activité avant de toucher au code. On pose les bonnes questions, on comprend vos enjeux, et on vous livre quelque chose qui <strong style={{ color: '#0f172a' }}>a du sens pour votre business</strong>.
+              </p>
+              <p style={{ color: '#475569', fontSize: '0.97rem', lineHeight: 1.8 }}>
+                Sites web, applications, automatisations — on maîtrise les trois. Et on adore les projets qui combinent tout ça.
+              </p>
             </div>
           </div>
 

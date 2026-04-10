@@ -92,6 +92,33 @@ L'utilisateur est non-développeur francophone. Adapter le niveau de langage en 
 
 ---
 
+## Déploiement
+
+**Ce projet est hébergé sur un VPS Hostinger via Coolify — PAS sur Vercel/Netlify.**
+
+| Élément | Valeur |
+|---|---|
+| URL live | https://webotix.cloud |
+| Dashboard Coolify | http://187.124.217.191:8000 |
+| GitHub source | https://github.com/webotixsupport-glitch/webotix (public, branche main) |
+| Build | Dockerfile custom (node:22-alpine → nginx:alpine) |
+
+### Pour déployer une mise à jour
+1. S'assurer que le code est pushé sur GitHub (`git push origin main`)
+2. Utiliser la skill `/deployer` ou appeler `@deployeur`
+3. L'agent gère tout le reste (API Coolify, vérification HTTP 200)
+
+### Fichiers de déploiement (NE PAS SUPPRIMER)
+- `Dockerfile` — build multi-étapes Node 22 → Nginx
+- `nginx.conf` — routing SPA + cache assets + gzip
+- `.gitignore` — exclut node_modules et dist
+
+### Règle critique
+Ne JAMAIS commiter `node_modules/` ou `dist/` dans le dépôt GitHub. Vite 8 nécessite Node >=22.12.0 — utiliser le Dockerfile custom, pas nixpacks.
+
+---
+
 ## Skills et agents disponibles
 
-Consulte `.claude/skills/` pour les compétences spécialisées. Utilise-les automatiquement quand la situation correspond (SEO, responsive, déploiement, corrections de bugs, création de site).
+- `/deployer` ou `@deployeur` — déploiement complet sur VPS Coolify (autonome)
+- Consulte `.claude/skills/` pour les autres compétences spécialisées.
