@@ -106,11 +106,11 @@ function Footer() {
           {/* Colonne 4 — Contact */}
           <div className="will-animate" style={{ transitionDelay: '0.24s' }}>
             <div style={s.titre}>Contact</div>
-            <a href="mailto:webotix.support@gmail.com" style={{ ...s.lien, marginBottom: '10px' }}
+            <a href="mailto:contact@webotix.cloud" style={{ ...s.lien, marginBottom: '10px' }}
               onMouseEnter={e => { e.currentTarget.style.color = '#0ea5e9'; e.currentTarget.style.paddingLeft = '4px' }}
               onMouseLeave={e => { e.currentTarget.style.color = '#64748b'; e.currentTarget.style.paddingLeft = '0' }}
             >
-              webotix.support@gmail.com
+              contact@webotix.cloud
             </a>
             <p style={{ color: '#475569', fontSize: '0.875rem', marginBottom: '10px' }}>Réponse sous 24h</p>
             <p style={{ color: '#475569', fontSize: '0.875rem' }}>France — 100% en ligne</p>

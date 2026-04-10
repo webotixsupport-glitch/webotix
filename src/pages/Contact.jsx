@@ -40,7 +40,7 @@ function Contact() {
     setErreur('')
   }
 
-  // Soumission du formulaire
+  // Soumission du formulaire — envoi réel via Web3Forms
   const gererSoumission = async (e) => {
     e.preventDefault()
     if (!formulaire.nom || !formulaire.email || !formulaire.message) {
@@ -52,15 +52,36 @@ function Contact() {
       return
     }
     setEnvoi(true)
-    await new Promise((res) => setTimeout(res, 1500))
-    setEnvoi(false)
-    setEnvoye(true)
+    try {
+      const reponse = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+          access_key: '5dcf7e4a-8446-480c-8c0a-1a5669b1a73e',
+          name: formulaire.nom,
+          email: formulaire.email,
+          subject: formulaire.sujet ? `[Webotix] ${formulaire.sujet}` : '[Webotix] Nouveau message',
+          message: formulaire.message,
+          from_name: 'Formulaire Webotix',
+        }),
+      })
+      const data = await reponse.json()
+      if (data.success) {
+        setEnvoye(true)
+      } else {
+        setErreur('Une erreur est survenue. Merci de réessayer ou de nous écrire directement.')
+      }
+    } catch {
+      setErreur('Impossible d\'envoyer le message. Vérifiez votre connexion et réessayez.')
+    } finally {
+      setEnvoi(false)
+    }
   }
 
   const sujets = ['Site vitrine', 'Site e-commerce', 'Application web/mobile', 'Automatisation', 'Refonte de site', 'Autre']
 
   const infos = [
-    { icone: <IcoMail />, label: 'Email', valeur: 'webotix.support@gmail.com', accent: '#0ea5e9', bg: 'linear-gradient(135deg, #eff6ff, #e0f2fe)' },
+    { icone: <IcoMail />, label: 'Email', valeur: 'contact@webotix.cloud', accent: '#0ea5e9', bg: 'linear-gradient(135deg, #eff6ff, #e0f2fe)' },
     { icone: <IcoClock />, label: 'Temps de réponse', valeur: 'Moins de 24 heures', accent: '#6366f1', bg: 'linear-gradient(135deg, #f5f3ff, #ede9fe)' },
     { icone: <IcoPin />, label: 'Localisation', valeur: 'France — 100% en ligne', accent: '#f59e0b', bg: 'linear-gradient(135deg, #fffbeb, #fef3c7)' },
   ]
