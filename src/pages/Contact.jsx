@@ -58,10 +58,11 @@ function Contact() {
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
         body: JSON.stringify({
           access_key: '5dcf7e4a-8446-480c-8c0a-1a5669b1a73e',
+          name: formulaire.nom,
+          email: formulaire.email,
           subject: formulaire.sujet ? `[Webotix] ${formulaire.sujet}` : '[Webotix] Nouveau message',
+          message: formulaire.message,
           from_name: 'Formulaire Webotix',
-          replyto: formulaire.email,
-          message: `Nom : ${formulaire.nom}\nEmail : ${formulaire.email}\nType de projet : ${formulaire.sujet || 'Non précisé'}\n\nMessage :\n${formulaire.message}`,
         }),
       })
       const data = await reponse.json()
