@@ -1,0 +1,8 @@
+# Robots.txt — Webotix
+# Autorise tous les robots à indexer le site
+
+User-agent: *
+Allow: /
+
+# Localisation du sitemap pour Google et les IA
+Sitemap: https://webotix.cloud/sitemap.xml

@@ -1,5 +1,4 @@
-import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect } from 'react'
 
 // Icônes SVG de contact
 const IcoMail = () => (
@@ -27,6 +26,11 @@ const IcoSend = () => (
 )
 
 function Contact() {
+  // Titre de page optimisé SEO
+  useEffect(() => {
+    document.title = 'Contact — Webotix | Devis gratuit pour votre site web ou application'
+  }, [])
+
   // État du formulaire
   const [formulaire, setFormulaire] = useState({ nom: '', email: '', sujet: '', message: '' })
   const [envoye, setEnvoye] = useState(false)
@@ -333,7 +337,7 @@ function Contact() {
                       style={{ ...champStyle('sujet'), appearance: 'none', cursor: 'pointer' }}
                     >
                       <option value="">Sélectionnez un type de projet</option>
-                      {sujets.map((s) => <option key={s} value={s}>{s}</option>)}
+                      {sujets.map((sujet) => <option key={sujet} value={sujet}>{sujet}</option>)}
                     </select>
                   </div>
 

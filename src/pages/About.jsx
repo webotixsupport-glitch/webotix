@@ -79,6 +79,11 @@ function About() {
 
   const techs = ['React', 'Tailwind CSS', 'Node.js', 'Vite', 'Make', 'Zapier', 'Figma', 'SEO', 'APIs']
 
+  // Titre de page optimisé SEO
+  useEffect(() => {
+    document.title = 'À propos — Webotix | Agence digitale française, création web & automatisation'
+  }, [])
+
   // Animation des barres de compétences au scroll
   const [barresVisibles, setBarresVisibles] = useState(false)
   const refBarres = useRef(null)
@@ -431,7 +436,7 @@ function About() {
 
           {/* Citation */}
           <div className="will-animate" style={{ transitionDelay: '0.1s' }}>
-            <div style={{ fontSize: '5rem', color: 'rgba(14,165,233,0.15)', lineHeight: 0.7, marginBottom: '20px', fontFamily: 'Georgia, serif' }} aria-hidden="true">"</div>
+            <div style={{ fontSize: '5rem', color: 'rgba(14,165,233,0.15)', lineHeight: 0.7, marginBottom: '20px', fontFamily: "'Outfit', sans-serif" }} aria-hidden="true">"</div>
             <blockquote style={{
               fontStyle: 'italic',
               fontSize: 'clamp(1.05rem, 2vw, 1.3rem)',

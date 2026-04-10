@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { useEffect } from 'react'
 
 // Photos réelles Unsplash — IDs permanents, bien cadrées
 const PHOTOS = {
@@ -26,6 +27,11 @@ const IcoCheck = ({ color = '#0ea5e9' }) => (
 )
 
 function Home() {
+
+  // Titre de page optimisé SEO
+  useEffect(() => {
+    document.title = 'Webotix — Création de sites web, applications & automatisations | Agence digitale France'
+  }, [])
 
   const services = [
     {
@@ -364,8 +370,8 @@ function Home() {
                       objectFit: 'cover', display: 'block',
                       transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)',
                     }}
-                    onMouseEnter={e => e.target.style.transform = 'scale(1.04)'}
-                    onMouseLeave={e => e.target.style.transform = 'scale(1)'}
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                    onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                   />
                   {/* Overlay coloré léger */}
                   <div style={{
