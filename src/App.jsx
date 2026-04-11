@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import MentionsLegales from './pages/MentionsLegales'
+import Services from './pages/Services'
 import NotFound from './pages/NotFound'
 
 // Déclenche les animations fade au scroll sur tous les éléments .will-animate
@@ -50,6 +51,7 @@ function App() {
         <main className="flex-1">
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/services" element={<Services />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />

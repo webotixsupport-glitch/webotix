@@ -70,7 +70,7 @@ function Footer() {
             <div style={s.titre}>Navigation</div>
             {[
               { nom: 'Accueil', href: '/' },
-              { nom: 'Nos services', href: '/#services' },
+              { nom: 'Nos services', href: '/services' },
               { nom: 'Pourquoi nous', href: '/#pourquoi' },
               { nom: 'À propos', href: '/a-propos' },
               { nom: 'Contact', href: '/contact' },

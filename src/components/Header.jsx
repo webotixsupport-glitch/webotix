@@ -15,6 +15,7 @@ function Header() {
 
   const liens = [
     { nom: 'Accueil', href: '/' },
+    { nom: 'Services', href: '/services' },
     { nom: 'À propos', href: '/a-propos' },
     { nom: 'Contact', href: '/contact' },
   ]
