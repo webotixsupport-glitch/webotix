@@ -119,7 +119,17 @@ function Footer() {
         {/* Bas de page */}
         <div style={s.bas}>
           <span style={s.copy}>© {annee} Webotix. Tous droits réservés.</span>
-          <span style={s.copy}>Créé avec passion · Depuis 2025</span>
+          <div style={{ display: 'flex', gap: '24px', alignItems: 'center', flexWrap: 'wrap' }}>
+            <a
+              href="/mentions-legales"
+              style={{ ...s.copy, textDecoration: 'none', transition: 'color 0.25s cubic-bezier(0.22,1,0.36,1)' }}
+              onMouseEnter={e => { e.currentTarget.style.color = '#0ea5e9' }}
+              onMouseLeave={e => { e.currentTarget.style.color = '#334155' }}
+            >
+              Mentions légales
+            </a>
+            <span style={s.copy}>Créé avec passion · Depuis 2025</span>
+          </div>
         </div>
       </div>
     </footer>

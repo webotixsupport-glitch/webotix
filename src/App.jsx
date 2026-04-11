@@ -2,9 +2,11 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import BoutonCalendly from './components/BoutonCalendly'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
+import MentionsLegales from './pages/MentionsLegales'
 
 // Déclenche les animations fade au scroll sur tous les éléments .will-animate
 function ScrollAnimator() {
@@ -49,8 +51,12 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/mentions-legales" element={<MentionsLegales />} />
           </Routes>
         </main>
+
+        {/* Bouton flottant RDV Calendly — visible sur toutes les pages */}
+        <BoutonCalendly />
 
         {/* Pied de page — masqué sur la page contact */}
         <FooterConditionnel />
