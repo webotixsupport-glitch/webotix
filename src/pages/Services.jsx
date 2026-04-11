@@ -366,7 +366,8 @@ function Services() {
               </div>
 
               {/* Photo */}
-              <div style={{ order: i % 2 === 0 ? 2 : 1 }} className="will-animate" style={{
+              <div className="will-animate" style={{
+                order: i % 2 === 0 ? 2 : 1,
                 borderRadius: '20px', overflow: 'hidden',
                 boxShadow: `0 20px 60px ${srv.accent}15, 0 8px 24px rgba(0,0,0,0.08)`,
                 transitionDelay: '0.1s',

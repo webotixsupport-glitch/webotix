@@ -4,15 +4,23 @@
   <!-- Page d'accueil — priorité maximale -->
   <url>
     <loc>https://webotix.cloud/</loc>
-    <lastmod>2025-04-10</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
+  </url>
+
+  <!-- Page Services -->
+  <url>
+    <loc>https://webotix.cloud/services</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
   </url>
 
   <!-- Page À propos -->
   <url>
     <loc>https://webotix.cloud/a-propos</loc>
-    <lastmod>2025-04-10</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -20,9 +28,17 @@
   <!-- Page Contact -->
   <url>
     <loc>https://webotix.cloud/contact</loc>
-    <lastmod>2025-04-10</lastmod>
+    <lastmod>2026-04-11</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Mentions légales -->
+  <url>
+    <loc>https://webotix.cloud/mentions-legales</loc>
+    <lastmod>2026-04-11</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>
