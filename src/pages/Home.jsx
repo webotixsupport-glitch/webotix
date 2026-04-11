@@ -65,24 +65,24 @@ function Home() {
 
   const temoignages = [
     {
-      nom: 'Marc Dupont',
-      poste: 'Gérant — Dupont Menuiserie',
-      avatar: 'https://images.unsplash.com/photo-1504257432389-52343af06ae3?w=80&h=80&fit=crop&crop=faces&q=85',
-      texte: 'Webotix a complètement transformé notre présence en ligne. Le site est moderne, rapide, et nos clients nous le font remarquer. Travail sérieux, délais respectés.',
+      nom: 'Celine Mounous',
+      poste: 'Dirigeante — Refonte site web',
+      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces&q=85',
+      texte: 'Agence sollicitée pour la refonte de notre site web, tout était parfait de l\'accompagnement, au respect des demandes à la livraison du site. Très bonne communication.',
       accent: '#0ea5e9',
     },
     {
-      nom: 'Leïla Benali',
-      poste: 'Fondatrice — Studio LB',
-      avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces&q=85',
-      texte: "J'avais une idée d'application complexe. Webotix l'a réalisée exactement comme je l'imaginais. Communication parfaite du début à la fin.",
+      nom: 'Virginie Robet',
+      poste: 'Cliente — Création de site web',
+      avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=faces&q=85',
+      texte: 'Travail sérieux, rapide et efficace ! Toujours disponible et réactif, propositions pertinentes, résultat au top, je recommande vivement !',
       accent: '#6366f1',
     },
     {
-      nom: 'Thomas Renard',
-      poste: 'Directeur — Renard Immo',
+      nom: 'Dylan Leluan',
+      poste: 'Entrepreneur — Création de site web',
       avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&h=80&fit=crop&crop=faces&q=85',
-      texte: "L'automatisation mise en place nous fait gagner 4 heures par semaine. Plus de relances manuelles, tout fonctionne seul. Excellent rapport qualité-prix.",
+      texte: "J'ai jamais vu un site aussi bien fait pour un petit entrepreneur. Je recommande sans hésitation.",
       accent: '#f59e0b',
     },
   ]
