@@ -58,8 +58,8 @@ function Header() {
                 transition: 'all 0.2s ease',
                 whiteSpace: 'nowrap',
               }}
-              onMouseEnter={e => { if (!actif(l.href)) e.currentTarget.style.color = '#fff' }}
-              onMouseLeave={e => { if (!actif(l.href)) e.currentTarget.style.color = '#e2e8f0' }}
+              onMouseEnter={e => { if (!actif(l.href)) { e.currentTarget.style.color = '#fff'; e.currentTarget.style.background = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateY(-1px)' } }}
+              onMouseLeave={e => { if (!actif(l.href)) { e.currentTarget.style.color = '#e2e8f0'; e.currentTarget.style.background = 'transparent'; e.currentTarget.style.transform = 'translateY(0)' } }}
               >
                 {l.nom}
               </Link>

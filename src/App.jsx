@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import MentionsLegales from './pages/MentionsLegales'
+import NotFound from './pages/NotFound'
 
 // Déclenche les animations fade au scroll sur tous les éléments .will-animate
 function ScrollAnimator() {
@@ -52,6 +53,7 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
 

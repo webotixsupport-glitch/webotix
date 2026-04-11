@@ -56,6 +56,14 @@ body {
   transform: translateY(0);
 }
 
+/* Flèches entre les étapes du processus — visibles uniquement sur desktop */
+@media (min-width: 880px) {
+  .etape-fleche { display: block !important; }
+}
+
+/* Scrollbar — plus raffinée */
+::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
+
 /* Hover lift sur cartes — inclut opacity pour compatibilité avec will-animate */
 .card-lift {
   transition: transform 0.35s cubic-bezier(0.22,1,0.36,1),

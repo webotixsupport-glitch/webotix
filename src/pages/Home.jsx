@@ -365,6 +365,7 @@ function Home() {
                   <img
                     src={srv.photo}
                     alt={srv.photoAlt}
+                    loading="lazy"
                     style={{
                       width: '100%', height: '100%',
                       objectFit: 'cover', display: 'block',
@@ -449,24 +450,40 @@ function Home() {
             </h2>
           </div>
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', alignItems: 'start' }}>
             {etapes.map((e, i) => (
-              <div key={e.num} className="card-lift will-animate" style={{
-                background: e.bg, borderRadius: '20px',
-                padding: '32px 28px', border: `1px solid ${e.color}20`,
-                boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                transitionDelay: `${i * 0.08}s`,
-              }}>
-                <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: '4rem', color: e.color, opacity: 0.25, lineHeight: 1, marginBottom: '16px' }} aria-hidden="true">
-                  {e.num}
+              <div key={e.num} style={{ position: 'relative' }}>
+                <div className="card-lift will-animate" style={{
+                  background: e.bg, borderRadius: '20px',
+                  padding: '32px 28px', border: `1px solid ${e.color}20`,
+                  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+                  transitionDelay: `${i * 0.08}s`,
+                }}>
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: '4rem', color: e.color, opacity: 0.25, lineHeight: 1, marginBottom: '16px' }} aria-hidden="true">
+                    {e.num}
+                  </div>
+                  <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1.15rem', color: '#0f172a', marginBottom: '10px' }}>
+                    {e.titre}
+                  </h3>
+                  <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif" }}>
+                    {e.desc}
+                  </p>
+                  <div style={{ width: '32px', height: '3px', borderRadius: '2px', background: e.color, marginTop: '20px' }} />
                 </div>
-                <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1.15rem', color: '#0f172a', marginBottom: '10px' }}>
-                  {e.titre}
-                </h3>
-                <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif" }}>
-                  {e.desc}
-                </p>
-                <div style={{ width: '32px', height: '3px', borderRadius: '2px', background: e.color, marginTop: '20px' }} />
+                {/* Flèche entre les étapes — visible uniquement sur desktop (masquée via style inline conditionnel) */}
+                {i < etapes.length - 1 && (
+                  <div style={{
+                    display: 'none',
+                    position: 'absolute', top: '50%', right: '-18px',
+                    transform: 'translateY(-50%)', zIndex: 2,
+                  }}
+                  className="etape-fleche"
+                  aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <polyline points="9 18 15 12 9 6" />
+                    </svg>
+                  </div>
+                )}
               </div>
             ))}
           </div>
@@ -488,22 +505,33 @@ function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
             {temoignages.map((t, i) => (
               <div key={t.nom} className="card-lift" style={{
-                background: 'white', borderRadius: '20px',
-                padding: '32px', border: '1px solid #f1f5f9',
+                background: `linear-gradient(135deg, ${t.accent}08, ${t.accent}04)`,
+                borderRadius: '20px',
+                padding: '32px', border: `1px solid ${t.accent}18`,
                 borderTop: `3px solid ${t.accent}`,
                 boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
                 animation: `fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) ${i*0.1}s both`,
+                position: 'relative', overflow: 'hidden',
               }}>
-                <div style={{ display: 'flex', gap: '3px', marginBottom: '20px' }}>
+                {/* Guillemet décoratif en arrière-plan */}
+                <div style={{
+                  position: 'absolute', top: '12px', right: '20px',
+                  fontFamily: 'Georgia, serif', fontSize: '7rem', lineHeight: 1,
+                  color: t.accent, opacity: 0.07, userSelect: 'none',
+                  pointerEvents: 'none',
+                }} aria-hidden="true">"</div>
+
+                <div style={{ display: 'flex', gap: '3px', marginBottom: '20px', position: 'relative' }}>
                   {[1,2,3,4,5].map(s => <IcoStar key={s} />)}
                 </div>
 
-                <p style={{ color: '#475569', fontSize: '0.925rem', lineHeight: 1.8, marginBottom: '24px', fontFamily: "'DM Sans', sans-serif", fontStyle: 'italic' }}>
+                <p style={{ color: '#475569', fontSize: '0.925rem', lineHeight: 1.8, marginBottom: '24px', fontFamily: "'DM Sans', sans-serif", fontStyle: 'italic', position: 'relative' }}>
                   "{t.texte}"
                 </p>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '20px', borderTop: '1px solid #f1f5f9' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '20px', borderTop: `1px solid ${t.accent}15` }}>
                   <img src={t.avatar} alt={`Photo de ${t.nom}`}
+                    loading="lazy"
                     style={{ width: '44px', height: '44px', borderRadius: '50%', flexShrink: 0, border: `2px solid ${t.accent}40` }} />
                   <div>
                     <div style={{ color: '#0f172a', fontWeight: 600, fontSize: '0.875rem', fontFamily: "'DM Sans', sans-serif" }}>{t.nom}</div>
