@@ -1,0 +1,53 @@
+name: Deploiement automatique — webotix.cloud
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    name: Build et deploiement sur VPS
+    runs-on: ubuntu-latest
+
+    steps:
+      # 1. Recuperer le code source
+      - name: Checkout du code
+        uses: actions/checkout@v4
+
+      # 2. Installer Node.js 22
+      - name: Installer Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+
+      # 3. Installer les dependances
+      - name: Installer les dependances npm
+        run: npm ci
+
+      # 4. Compiler le site React/Vite
+      - name: Compiler le site
+        run: npm run build
+
+      # 5. Copier les fichiers compiles sur le VPS
+      - name: Deployer sur le VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_DEPLOY_KEY }}
+          source: "dist/*"
+          target: "/var/www/webotix"
+          strip_components: 1
+
+      # 6. Recharger le container nginx pour prendre les nouveaux fichiers
+      - name: Recharger nginx
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_DEPLOY_KEY }}
+          script: |
+            docker exec webotix-site nginx -s reload
+            echo "Deploiement termine - webotix.cloud mis a jour"
