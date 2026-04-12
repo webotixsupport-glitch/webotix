@@ -94,27 +94,30 @@ L'utilisateur est non-développeur francophone. Adapter le niveau de langage en 
 
 ## Déploiement
 
-**Ce projet est hébergé sur un VPS Hostinger via Coolify — PAS sur Vercel/Netlify.**
+**Ce projet est hébergé sur un VPS Hostinger — déploiement via GitHub Actions (PAS Coolify).**
 
 | Élément | Valeur |
 |---|---|
 | URL live | https://webotix.cloud |
-| Dashboard Coolify | http://187.124.217.191:8000 |
 | GitHub source | https://github.com/webotixsupport-glitch/webotix (public, branche main) |
-| Build | Dockerfile custom (node:22-alpine → nginx:alpine) |
+| Workflow | `.github/workflows/deploy.yml` |
+| Serveur web | nginx:alpine (Docker) + Traefik (SSL auto Let's Encrypt) |
+| Fichiers servis | `/var/www/webotix/` sur le VPS |
 
 ### Pour déployer une mise à jour
-1. S'assurer que le code est pushé sur GitHub (`git push origin main`)
-2. Utiliser la skill `/deployer` ou appeler `@deployeur`
-3. L'agent gère tout le reste (API Coolify, vérification HTTP 200)
+```bash
+git push origin main
+```
+C'est tout — GitHub Actions build et déploie automatiquement en ~1 minute.
 
-### Fichiers de déploiement (NE PAS SUPPRIMER)
-- `Dockerfile` — build multi-étapes Node 22 → Nginx
-- `nginx.conf` — routing SPA + cache assets + gzip
-- `.gitignore` — exclut node_modules et dist
+### Ce qui se passe automatiquement
+1. Build React/Vite sur le runner GitHub (Node 22)
+2. Copie de `dist/` vers `/var/www/webotix/` sur le VPS via SCP
+3. Rechargement de nginx
+4. Restauration de la mémoire de Beep si nécessaire
 
 ### Règle critique
-Ne JAMAIS commiter `node_modules/` ou `dist/` dans le dépôt GitHub. Vite 8 nécessite Node >=22.12.0 — utiliser le Dockerfile custom, pas nixpacks.
+Ne JAMAIS commiter `node_modules/` ou `dist/`. Coolify est supprimé — ne plus l'utiliser.
 
 ---
 

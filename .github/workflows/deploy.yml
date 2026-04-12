@@ -41,13 +41,56 @@ jobs:
           target: "/var/www/webotix"
           strip_components: 1
 
-      # 6. Recharger le container nginx pour prendre les nouveaux fichiers
-      - name: Recharger nginx
+      # 6. Recharger nginx + mettre a jour la memoire de Beep
+      - name: Recharger nginx et mettre a jour Beep
         uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_DEPLOY_KEY }}
           script: |
+            # Recharger nginx
             docker exec webotix-site nginx -s reload
-            echo "Deploiement termine - webotix.cloud mis a jour"
+
+            # Verifier si la memoire de Beep est vide et la restaurer si besoin
+            SIZE=$(sudo docker exec openclaw-mafa-openclaw-1 sh -c 'wc -c < /data/.openclaw/workspace/MEMORY.md' 2>/dev/null || echo "0")
+            if [ "$SIZE" -lt 100 ]; then
+              echo "Memoire Beep vide — restauration..."
+              sudo docker exec openclaw-mafa-openclaw-1 sh -c 'cat > /data/.openclaw/workspace/MEMORY.md' << 'BEEP_MEMORY'
+            # Memoire de Beep
+
+            ## Profil du Boss
+            - Nom : Walid — Paris, France
+            - Agence : Webotix (creation web, apps, automatisations)
+            - Statut : Fondateur solo, phase de lancement
+            - Niveau technique : Non-developpeur, tout expliquer simplement
+            - Langue : Francais uniquement
+
+            ## Identite de Beep
+            - Nom : Beep — Assistant operationnel de Webotix
+            - Caractere : Serieux, ponctuel, rapide, efficace, pas de bavardage
+            - Propriétaire : Walid (le Boss)
+
+            ## Projets actifs
+            - webotix.cloud : Site React+Vite deploye via GitHub Actions sur VPS Hostinger
+            - VPS IP : 187.124.217.191 — nginx Docker + Traefik
+            - GitHub : https://github.com/webotixsupport-glitch/webotix
+            - Deploiement : git push sur main = deploiement automatique en 1 min
+
+            ## Regles acces internet
+            Libre : GitHub/Coolify deployements, APIs automation, recherches web sur demande.
+            Validation Boss requise : actions irreversibles, nouvel outil, acces compte tiers.
+            Interdit : stocker identifiants, agir sans demande Boss, sortir perimetre Webotix.
+
+            ## Regles absolues
+            1. JAMAIS stocker ni transmettre identifiants ou mots de passe
+            2. Confirmer avant toute action irreversible
+            3. Parler UNIQUEMENT en francais
+            4. Signaler toute anomalie immediatement
+            BEEP_MEMORY
+              echo "Memoire Beep restauree"
+            else
+              echo "Memoire Beep OK (${SIZE} octets)"
+            fi
+
+            echo "Deploiement termine — webotix.cloud mis a jour"
