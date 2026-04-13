@@ -265,7 +265,7 @@ function Tarifs() {
 
   const W = { maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }
 
-  // Services de création — tarifs one-shot
+  // Prix de création — affichés dans le hero
   const creations = [
     {
       nom: 'Site web',
@@ -342,17 +342,17 @@ function Tarifs() {
     <div style={{ width: '100%', background: '#f8f9ff' }}>
 
       {/* ══════════════════════════
-          HERO — Vue d'ensemble des 2 types de tarifs
+          HERO — Tarifs de création + intro abonnements
       ══════════════════════════ */}
-      <section style={{ width: '100%', padding: '140px 24px 80px', background: 'white' }}>
-        <div style={{ ...W, textAlign: 'center', maxWidth: '820px' }}>
+      <section style={{ width: '100%', padding: '140px 24px 72px', background: 'white' }}>
+        <div style={{ ...W, textAlign: 'center', maxWidth: '760px' }}>
           <div className="fade-up">
             <Badge color="#0ea5e9" text="Nos tarifs" />
           </div>
           <h1 className="fade-up-2" style={{
             fontFamily: "'Outfit', sans-serif", fontWeight: 800,
             fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
-            color: '#0f172a', lineHeight: 1.15, marginBottom: '20px',
+            color: '#0f172a', lineHeight: 1.15, marginBottom: '16px',
           }}>
             Des prix clairs,{' '}
             <span style={{
@@ -363,299 +363,87 @@ function Tarifs() {
             </span>
           </h1>
           <p className="fade-up-3" style={{
-            color: '#64748b', fontSize: '1.05rem', lineHeight: 1.75,
-            fontFamily: "'DM Sans', sans-serif", marginBottom: '52px',
+            color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
+            fontFamily: "'DM Sans', sans-serif", marginBottom: '44px',
           }}>
-            Deux types de services : la <strong style={{ color: '#0f172a' }}>création de votre projet</strong> (paiement unique)
-            et la <strong style={{ color: '#0f172a' }}>maintenance mensuelle</strong> pour qu'on gère votre site
-            à votre place. Devis gratuit, sans engagement.
+            Création (paiement unique) ou maintenance mensuelle — deux offres complémentaires,
+            des tarifs transparents. Devis gratuit sous 48h, sans engagement.
           </p>
 
-          {/* Deux blocs de navigation rapide */}
-          <div className="fade-up-3" style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
-            gap: '16px', maxWidth: '600px', margin: '0 auto',
-          }}>
-            {/* Bloc Création */}
-            <a href="#creation" style={{
-              textDecoration: 'none',
-              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-              padding: '24px 28px', borderRadius: '18px',
-              background: 'linear-gradient(135deg, #eff6ff, #e0f2fe)',
-              border: '1px solid rgba(14,165,233,0.2)',
-              transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(14,165,233,0.15)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
-            >
-              <div style={{
-                width: '44px', height: '44px', borderRadius: '12px',
-                background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '14px', boxShadow: '0 4px 12px rgba(14,165,233,0.15)',
-              }}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <rect x="2" y="4" width="16" height="12" rx="2" stroke="#0ea5e9" strokeWidth="1.8"/>
-                  <path d="M6 10h8M6 13h5" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round"/>
-                </svg>
-              </div>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: '#0f172a', marginBottom: '4px' }}>
-                Création
-              </div>
-              <div style={{ color: '#0ea5e9', fontSize: '0.82rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: '10px' }}>
-                À partir de 400 € · Paiement unique
-              </div>
-              <div style={{ color: '#64748b', fontSize: '0.78rem', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>
-                Site web, application, automatisation — livré clé en main.
-              </div>
-              <div style={{ marginTop: '14px', color: '#0ea5e9', fontSize: '0.78rem', fontWeight: 700, fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', gap: '4px' }}>
-                Voir les tarifs
-                <svg width="12" height="12" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 11L11 2M11 2H4.5M11 2V8.5"/></svg>
-              </div>
-            </a>
-
-            {/* Bloc Maintenance */}
-            <a href="#maintenance" style={{
-              textDecoration: 'none',
-              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
-              padding: '24px 28px', borderRadius: '18px',
-              background: 'linear-gradient(135deg, #f5f3ff, #ede9fe)',
-              border: '1px solid rgba(99,102,241,0.2)',
-              transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
-              cursor: 'pointer',
-            }}
-            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(99,102,241,0.15)' }}
-            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
-            >
-              <div style={{
-                width: '44px', height: '44px', borderRadius: '12px',
-                background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                marginBottom: '14px', boxShadow: '0 4px 12px rgba(99,102,241,0.15)',
-              }}>
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
-                  <path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="#6366f1" strokeWidth="1.8"/>
-                  <path d="M10 6v4l3 2" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
-                </svg>
-              </div>
-              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: '#0f172a', marginBottom: '4px' }}>
-                Maintenance
-              </div>
-              <div style={{ color: '#6366f1', fontSize: '0.82rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: '10px' }}>
-                À partir de 49 €/mois · Sans engagement
-              </div>
-              <div style={{ color: '#64748b', fontSize: '0.78rem', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>
-                Hébergement, mises à jour, SEO et support inclus.
-              </div>
-              <div style={{ marginTop: '14px', color: '#6366f1', fontSize: '0.78rem', fontWeight: 700, fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', gap: '4px' }}>
-                Voir les abonnements
-                <svg width="12" height="12" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 11L11 2M11 2H4.5M11 2V8.5"/></svg>
-              </div>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* ══════════════════════════
-          TARIFS DE CRÉATION — Paiement unique
-      ══════════════════════════ */}
-      <section id="creation" style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
-        <div style={W}>
-
-          {/* En-tête */}
-          <div className="will-animate" style={{ textAlign: 'center', marginBottom: '60px' }}>
-            <Badge color="#0ea5e9" text="Création — Paiement unique" />
-            <h2 style={{
-              fontFamily: "'Outfit', sans-serif", fontWeight: 800,
-              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
-              color: '#0f172a', lineHeight: 1.15, marginBottom: '14px',
-            }}>
-              Votre projet, livré clé en main.
-            </h2>
-            <p style={{
-              color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
-              maxWidth: '520px', margin: '0 auto',
+          {/* ── Tarifs de création ── */}
+          <div className="fade-up-3" style={{ marginBottom: '44px' }}>
+            <div style={{
+              display: 'inline-block',
+              fontSize: '0.68rem', fontWeight: 700, letterSpacing: '0.1em',
+              textTransform: 'uppercase', color: '#94a3b8',
               fontFamily: "'DM Sans', sans-serif",
+              marginBottom: '16px',
             }}>
-              Un devis détaillé et gratuit pour chaque projet. Les prix ci-dessous sont indicatifs —
-              tout dépend de vos besoins, on s'adapte.
-            </p>
-          </div>
-
-          {/* 3 cartes de création */}
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-            gap: '24px',
-          }}>
-            {creations.map((srv, i) => (
-              <div key={srv.nom} className="will-animate" style={{ transitionDelay: `${i * 0.08}s` }}>
-                <div style={{
-                  borderRadius: '24px',
-                  background: 'white',
-                  border: '1px solid #e2e8f0',
-                  overflow: 'hidden',
-                  display: 'flex', flexDirection: 'column',
-                  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
-                  transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = `0 20px 50px ${srv.accent}15, 0 8px 20px rgba(0,0,0,0.06)` }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.04)' }}
-                >
-                  {/* En-tête coloré */}
-                  <div style={{ padding: '32px 32px 24px', background: srv.bg, borderBottom: `1px solid ${srv.accent}12` }}>
-                    <div style={{
-                      width: '52px', height: '52px', borderRadius: '14px',
-                      background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
-                      marginBottom: '16px', boxShadow: `0 4px 14px ${srv.accent}20`,
-                    }}>
-                      {srv.icon}
-                    </div>
-                    <div style={{
-                      fontFamily: "'Outfit', sans-serif", fontWeight: 800,
-                      fontSize: '1.3rem', color: '#0f172a', marginBottom: '8px',
-                    }}>
-                      {srv.nom}
-                    </div>
-                    {/* Tags */}
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
-                      {srv.types.map(t => (
-                        <span key={t} style={{
-                          padding: '3px 10px', borderRadius: '999px',
-                          background: 'white', border: `1px solid ${srv.accent}25`,
-                          color: srv.accent, fontSize: '0.72rem', fontWeight: 600,
-                          fontFamily: "'DM Sans', sans-serif",
-                        }}>{t}</span>
-                      ))}
-                    </div>
+              Création · Paiement unique
+            </div>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 200px), 1fr))',
+              gap: '12px',
+            }}>
+              {creations.map((c) => (
+                <div key={c.nom} style={{
+                  padding: '18px 20px', borderRadius: '14px',
+                  background: c.bg, border: `1px solid ${c.accent}18`,
+                  display: 'flex', alignItems: 'center', gap: '14px',
+                  textAlign: 'left',
+                }}>
+                  <div style={{
+                    width: '40px', height: '40px', borderRadius: '10px', flexShrink: 0,
+                    background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    boxShadow: `0 2px 8px ${c.accent}20`,
+                  }}>
+                    {c.icon}
                   </div>
-
-                  {/* Corps */}
-                  <div style={{ padding: '28px 32px', flex: 1, display: 'flex', flexDirection: 'column' }}>
-                    {/* Prix + délai */}
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '24px', paddingBottom: '20px', borderBottom: '1px solid #f1f5f9' }}>
-                      <div>
-                        <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif", marginBottom: '2px' }}>
-                          À partir de
-                        </div>
-                        <div style={{
-                          fontFamily: "'Outfit', sans-serif", fontWeight: 800,
-                          fontSize: '1.9rem', color: srv.accent, lineHeight: 1,
-                        }}>
-                          {srv.prix} €
-                        </div>
-                        <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif", marginTop: '2px' }}>
-                          paiement unique
-                        </div>
-                      </div>
-                      <div style={{ width: '1px', height: '44px', background: '#e2e8f0' }} />
-                      <div>
-                        <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif", marginBottom: '2px' }}>
-                          Délai moyen
-                        </div>
-                        <div style={{
-                          fontFamily: "'Outfit', sans-serif", fontWeight: 700,
-                          fontSize: '1rem', color: '#1e293b',
-                        }}>
-                          {srv.delai}
-                        </div>
-                      </div>
+                  <div>
+                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.9rem', color: '#0f172a' }}>
+                      {c.nom}
                     </div>
-
-                    {/* Inclus */}
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1, marginBottom: '28px' }}>
-                      {srv.inclus.map((item, j) => (
-                        <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
-                          <IcoCheck color={srv.accent} />
-                          <span style={{
-                            color: '#334155', fontSize: '0.855rem', lineHeight: 1.6,
-                            fontFamily: "'DM Sans', sans-serif",
-                          }}>
-                            {item}
-                          </span>
-                        </div>
-                      ))}
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.78rem', color: c.accent, fontWeight: 600 }}>
+                      dès {c.prix} €
                     </div>
-
-                    {/* CTA */}
-                    <Link to="/contact" style={{
-                      textDecoration: 'none',
-                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
-                      padding: '13px 20px', borderRadius: '12px',
-                      background: 'transparent',
-                      color: srv.accent,
-                      border: `2px solid ${srv.accent}35`,
-                      fontFamily: "'Outfit', sans-serif", fontSize: '0.9rem', fontWeight: 700,
-                      transition: 'all 0.25s cubic-bezier(0.22,1,0.36,1)',
-                    }}
-                    onMouseEnter={e => { e.currentTarget.style.background = `${srv.accent}10`; e.currentTarget.style.borderColor = `${srv.accent}60`; e.currentTarget.style.transform = 'translateY(-1px)' }}
-                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = `${srv.accent}35`; e.currentTarget.style.transform = 'translateY(0)' }}
-                    >
-                      Demander un devis gratuit <IcoArrow />
-                    </Link>
+                    <div style={{ fontFamily: "'DM Sans', sans-serif", fontSize: '0.72rem', color: '#94a3b8' }}>
+                      {c.delai}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Note rassurante */}
-          <div className="will-animate" style={{
-            marginTop: '40px', textAlign: 'center',
-            padding: '20px 32px', borderRadius: '14px',
-            background: 'white', border: '1px solid #e2e8f0',
-            display: 'inline-flex', alignItems: 'center', gap: '12px',
-            maxWidth: '100%',
-          }}>
-            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
-              <circle cx="10" cy="10" r="8" stroke="#22c55e" strokeWidth="1.6"/>
-              <path d="M10 7v3l2 2" stroke="#22c55e" strokeWidth="1.6" strokeLinecap="round"/>
-            </svg>
-            <span style={{ color: '#64748b', fontSize: '0.875rem', fontFamily: "'DM Sans', sans-serif" }}>
-              <strong style={{ color: '#0f172a' }}>Devis gratuit et sans engagement sous 48h.</strong>{' '}
-              On évalue ensemble le périmètre exact avant de chiffrer — pas de mauvaise surprise.
-            </span>
-          </div>
-
-        </div>
-      </section>
-
-      {/* ══════════════════════════
-          WEBOTIX CARE — En-tête de section
-      ══════════════════════════ */}
-      <section id="maintenance" style={{ width: '100%', padding: '100px 24px 40px', background: 'white' }}>
-        <div style={{ ...W, textAlign: 'center', maxWidth: '760px' }}>
-          <div className="will-animate">
-            <Badge color="#6366f1" text="Webotix Care — Maintenance" />
-          </div>
-          <h2 className="will-animate" style={{
-            fontFamily: "'Outfit', sans-serif", fontWeight: 800,
-            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
-            color: '#0f172a', lineHeight: 1.15, marginBottom: '16px',
-            transitionDelay: '0.05s',
-          }}>
-            Votre site entre{' '}
-            <span style={{
-              background: 'linear-gradient(90deg, #6366f1, #8b5cf6)',
-              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              ))}
+            </div>
+            <Link to="/contact" style={{
+              textDecoration: 'none',
+              display: 'inline-flex', alignItems: 'center', gap: '6px',
+              marginTop: '16px',
+              color: '#0ea5e9', fontSize: '0.82rem', fontWeight: 700,
+              fontFamily: "'DM Sans', sans-serif",
             }}>
-              de bonnes mains.
-            </span>
-          </h2>
-          <p className="will-animate" style={{
-            color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
-            fontFamily: "'DM Sans', sans-serif", marginBottom: '40px',
-            transitionDelay: '0.1s',
-          }}>
-            Webotix Care, c'est l'abonnement mensuel sans engagement pour qu'on gère votre site
-            à votre place — hébergement, mises à jour, SEO, support. Résiliable à tout moment.
-          </p>
+              Demander un devis gratuit
+              <IcoArrow />
+            </Link>
+          </div>
 
-          {/* Bouton bascule mensuel / annuel */}
-          <div className="will-animate" style={{
+          {/* ── Séparateur ── */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '36px' }}>
+            <div style={{ flex: 1, height: '1px', background: '#e2e8f0' }} />
+            <div style={{
+              padding: '5px 16px', borderRadius: '999px',
+              background: '#f1f5f9', border: '1px solid #e2e8f0',
+              color: '#94a3b8', fontSize: '0.72rem', fontWeight: 600,
+              fontFamily: "'DM Sans', sans-serif", whiteSpace: 'nowrap',
+            }}>
+              Webotix Care · Maintenance mensuelle
+            </div>
+            <div style={{ flex: 1, height: '1px', background: '#e2e8f0' }} />
+          </div>
+
+          {/* ── Toggle mensuel / annuel ── */}
+          <div style={{
             display: 'inline-flex', alignItems: 'center', gap: '16px',
             background: '#f1f5f9', padding: '6px', borderRadius: '14px',
-            transitionDelay: '0.15s',
           }}>
             <button
               onClick={() => setAnnuel(false)}
