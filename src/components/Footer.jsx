@@ -92,6 +92,7 @@ function Footer() {
               { nom: 'Applications', href: '/#services' },
               { nom: 'Automatisations', href: '/#services' },
               { nom: 'Avis clients', href: '/#temoignages' },
+              { nom: 'Blog', href: '/blog' },
             ].map((l) => (
               <a key={l.nom} href={l.href} style={s.lien}
                 onMouseEnter={e => { e.currentTarget.style.color = '#0ea5e9'; e.currentTarget.style.paddingLeft = '4px' }}

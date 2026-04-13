@@ -57,4 +57,36 @@
     <priority>0.3</priority>
   </url>
 
+  <!-- Blog — index -->
+  <url>
+    <loc>https://webotix.cloud/blog</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Article : Combien coûte un site web à Paris -->
+  <url>
+    <loc>https://webotix.cloud/blog/cout-site-web-paris</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article : Pourquoi votre site ne ramène pas de clients -->
+  <url>
+    <loc>https://webotix.cloud/blog/site-web-sans-clients</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Article : Comment choisir son agence web à Paris -->
+  <url>
+    <loc>https://webotix.cloud/blog/choisir-agence-web-paris</loc>
+    <lastmod>2026-04-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

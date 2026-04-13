@@ -13,6 +13,10 @@ import Merci from './pages/Merci'
 import MentionsLegales from './pages/MentionsLegales'
 import Services from './pages/Services'
 import Realisations from './pages/Realisations'
+import Blog from './pages/Blog'
+import CoutSiteWebParis from './pages/articles/CoutSiteWebParis'
+import SiteWebSansClients from './pages/articles/SiteWebSansClients'
+import ChoisirAgenceWebParis from './pages/articles/ChoisirAgenceWebParis'
 import NotFound from './pages/NotFound'
 
 // Déclenche les animations fade au scroll sur tous les éléments .will-animate
@@ -75,6 +79,10 @@ function App() {
             <Route path="/merci" element={<Merci />} />
             <Route path="/realisations" element={<Realisations />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/blog/cout-site-web-paris" element={<CoutSiteWebParis />} />
+            <Route path="/blog/site-web-sans-clients" element={<SiteWebSansClients />} />
+            <Route path="/blog/choisir-agence-web-paris" element={<ChoisirAgenceWebParis />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
