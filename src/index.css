@@ -107,6 +107,21 @@ body {
   }
 }
 
+/* ── Header — visibilité nav/hamburger ── */
+/* Mobile et tablette (<1024px) : hamburger visible, nav cachée */
+.header-nav      { display: none !important; }
+.header-cta-desk { display: none !important; }
+.header-mob      { display: flex !important; }
+.header-menu-mob { display: flex !important; }
+
+/* Desktop (≥1024px) : nav visible, hamburger caché */
+@media (min-width: 1024px) {
+  .header-nav      { display: flex !important; }
+  .header-cta-desk { display: block !important; }
+  .header-mob      { display: none !important; }
+  .header-menu-mob { display: none !important; }
+}
+
 /* Scrollbar — plus raffinée */
 ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
 
