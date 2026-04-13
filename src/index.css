@@ -61,6 +61,35 @@ body {
   .etape-fleche { display: block !important; }
 }
 
+/* ── Responsive mobile ── */
+
+/* Hero Home : 2 colonnes desktop → 1 colonne mobile */
+@media (max-width: 767px) {
+  .hero-grid {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  /* Masquer les badges flottants qui débordent sur mobile */
+  .hero-badge-float {
+    display: none !important;
+  }
+  /* Réduire le padding des sections services sur mobile */
+  .service-text-inner {
+    padding: 32px 24px !important;
+  }
+  /* CTA final — padding réduit sur mobile */
+  .cta-final-inner {
+    padding: 48px 24px !important;
+  }
+}
+
+/* Tablette (768px–1023px) : ajustements intermédiaires */
+@media (max-width: 1023px) {
+  .hero-badge-float {
+    display: none !important;
+  }
+}
+
 /* Scrollbar — plus raffinée */
 ::-webkit-scrollbar-thumb:hover { background: #0ea5e9; }
 

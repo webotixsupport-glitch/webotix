@@ -284,7 +284,7 @@ function Home() {
               </div>
 
               {/* Badge satisfaction */}
-              <div style={{
+              <div className="hero-badge-float" style={{
                 position: 'absolute', bottom: '28px', left: '-24px',
                 background: 'white', borderRadius: '14px',
                 padding: '12px 18px', boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
@@ -300,7 +300,7 @@ function Home() {
               </div>
 
               {/* Badge réponse */}
-              <div style={{
+              <div className="hero-badge-float" style={{
                 position: 'absolute', top: '20px', right: '-18px',
                 background: '#0ea5e9', borderRadius: '12px',
                 padding: '10px 18px', boxShadow: '0 8px 24px rgba(14,165,233,0.4)',
@@ -342,7 +342,7 @@ function Home() {
               }}>
 
                 {/* Texte */}
-                <div style={{
+                <div className="service-text-inner" style={{
                   order: i % 2 === 0 ? 1 : 2,
                   padding: '52px 48px',
                   display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px',
@@ -784,7 +784,7 @@ function Home() {
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '100px 24px 120px', background: 'white' }}>
         <div style={W}>
-          <div style={{
+          <div className="cta-final-inner" style={{
             borderRadius: '28px', padding: '72px 64px',
             background: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 60%, #8b5cf6 100%)',
             position: 'relative', overflow: 'hidden', textAlign: 'center',

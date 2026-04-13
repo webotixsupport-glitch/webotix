@@ -465,7 +465,7 @@ function Tarifs() {
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '80px 24px 120px', background: 'white' }}>
         <div style={W}>
-          <div className="will-animate" style={{
+          <div className="will-animate cta-final-inner" style={{
             borderRadius: '28px', padding: '72px 48px',
             background: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 60%, #8b5cf6 100%)',
             textAlign: 'center', position: 'relative', overflow: 'hidden',
