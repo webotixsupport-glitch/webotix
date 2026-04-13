@@ -3,6 +3,7 @@ import { useEffect } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import BoutonCalendly from './components/BoutonCalendly'
+import CookieBanner from './components/CookieBanner'
 import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
@@ -10,6 +11,7 @@ import Tarifs from './pages/Tarifs'
 import Merci from './pages/Merci'
 import MentionsLegales from './pages/MentionsLegales'
 import Services from './pages/Services'
+import Realisations from './pages/Realisations'
 import NotFound from './pages/NotFound'
 
 // Déclenche les animations fade au scroll sur tous les éléments .will-animate
@@ -58,6 +60,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/tarifs" element={<Tarifs />} />
             <Route path="/merci" element={<Merci />} />
+            <Route path="/realisations" element={<Realisations />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -65,6 +68,9 @@ function App() {
 
         {/* Bouton flottant RDV Calendly — visible sur toutes les pages */}
         <BoutonCalendly />
+
+        {/* Bandeau cookies RGPD — charge GA uniquement si accepté */}
+        <CookieBanner />
 
         {/* Pied de page — masqué sur la page contact */}
         <FooterConditionnel />

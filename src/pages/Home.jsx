@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 // Photos réelles Unsplash — IDs permanents, bien cadrées
 const PHOTOS = {
@@ -102,6 +102,33 @@ function Home() {
     { txt: 'Technologies modernes et performantes',     color: '#0ea5e9' },
     { txt: 'Devis gratuit sans engagement',             color: '#6366f1' },
   ]
+
+  // Formulaire lead magnet — audit gratuit
+  const [audit, setAudit] = useState({ prenom: '', email: '', url: '' })
+  const [auditStatut, setAuditStatut] = useState('idle') // idle | envoi | ok | erreur
+
+  const envoyerAudit = async (e) => {
+    e.preventDefault()
+    setAuditStatut('envoi')
+    try {
+      const rep = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          access_key: '5dcf7e4a-8446-480c-8c0a-1a5669b1a73e',
+          subject: `🔍 Audit gratuit demandé par ${audit.prenom}`,
+          from_name: audit.prenom,
+          email: audit.email,
+          url_site: audit.url || 'Non renseignée',
+          botcheck: '',
+        }),
+      })
+      const data = await rep.json()
+      setAuditStatut(data.success ? 'ok' : 'erreur')
+    } catch {
+      setAuditStatut('erreur')
+    }
+  }
 
   const W = { maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }
   const badge = (color, text) => (
@@ -540,6 +567,201 @@ function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════
+          LEAD MAGNET — Audit gratuit
+      ══════════════════════════ */}
+      <section style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
+        <div style={W}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 420px), 1fr))',
+            gap: '60px', alignItems: 'center',
+          }}>
+
+            {/* Texte gauche */}
+            <div>
+              {badge('#6366f1', 'Offre gratuite')}
+              <h2 style={{
+                fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+                color: '#0f172a', lineHeight: 1.2, marginBottom: '16px',
+              }}>
+                Votre site attire-t-il vraiment des clients ?
+              </h2>
+              <p style={{
+                color: '#64748b', fontSize: '1rem', lineHeight: 1.8,
+                fontFamily: "'DM Sans', sans-serif", marginBottom: '28px',
+              }}>
+                On analyse votre site web gratuitement — design, vitesse, SEO, et ce qui bloque vos visiteurs. Vous recevez un rapport clair et honnête sous 48h.
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                {[
+                  { txt: 'Analyse SEO et visibilité Google', color: '#0ea5e9' },
+                  { txt: 'Audit design et expérience mobile', color: '#6366f1' },
+                  { txt: 'Rapport détaillé sous 48h, sans engagement', color: '#22c55e' },
+                ].map(({ txt, color }) => (
+                  <div key={txt} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                    <div style={{
+                      width: '22px', height: '22px', borderRadius: '50%',
+                      background: `${color}15`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                    }}>
+                      <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
+                        <path d="M2 6l3 3 5-5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                      </svg>
+                    </div>
+                    <span style={{ color: '#475569', fontSize: '0.92rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
+                      {txt}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Formulaire droite */}
+            <div style={{
+              background: 'white', borderRadius: '24px',
+              padding: '40px', boxShadow: '0 8px 40px rgba(0,0,0,0.08)',
+              border: '1px solid #e2e8f0',
+            }}>
+              {auditStatut === 'ok' ? (
+                <div style={{ textAlign: 'center', padding: '20px 0' }}>
+                  <div style={{
+                    width: '64px', height: '64px', borderRadius: '50%',
+                    background: '#22c55e15', margin: '0 auto 20px',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  }}>
+                    <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+                      <path d="M6 14l6 6 10-10" stroke="#22c55e" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
+                  </div>
+                  <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.4rem', color: '#0f172a', marginBottom: '10px' }}>
+                    Demande reçue !
+                  </h3>
+                  <p style={{ color: '#64748b', fontSize: '0.92rem', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.7 }}>
+                    On analyse votre site et vous envoie un rapport complet sous 48h. Vérifiez votre boîte mail.
+                  </p>
+                </div>
+              ) : (
+                <form onSubmit={envoyerAudit}>
+                  <h3 style={{
+                    fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                    fontSize: '1.3rem', color: '#0f172a', marginBottom: '6px',
+                  }}>
+                    Audit gratuit de votre site
+                  </h3>
+                  <p style={{
+                    color: '#94a3b8', fontSize: '0.85rem',
+                    fontFamily: "'DM Sans', sans-serif", marginBottom: '28px',
+                  }}>
+                    Réponse sous 48h · Sans engagement
+                  </p>
+
+                  {/* Champ prénom */}
+                  <div style={{ marginBottom: '16px' }}>
+                    <label style={{
+                      display: 'block', fontSize: '0.82rem', fontWeight: 600,
+                      color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px',
+                    }}>
+                      Votre prénom *
+                    </label>
+                    <input
+                      type="text" required
+                      value={audit.prenom}
+                      onChange={e => setAudit(a => ({ ...a, prenom: e.target.value }))}
+                      placeholder="Ex : Marc"
+                      style={{
+                        width: '100%', padding: '11px 16px', borderRadius: '10px',
+                        border: '1.5px solid #e2e8f0', fontSize: '0.9rem',
+                        fontFamily: "'DM Sans', sans-serif", color: '#0f172a',
+                        background: '#f8fafc', outline: 'none', boxSizing: 'border-box',
+                        transition: 'border-color 0.2s ease',
+                      }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#0ea5e9' }}
+                      onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
+                    />
+                  </div>
+
+                  {/* Champ email */}
+                  <div style={{ marginBottom: '16px' }}>
+                    <label style={{
+                      display: 'block', fontSize: '0.82rem', fontWeight: 600,
+                      color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px',
+                    }}>
+                      Votre email *
+                    </label>
+                    <input
+                      type="email" required
+                      value={audit.email}
+                      onChange={e => setAudit(a => ({ ...a, email: e.target.value }))}
+                      placeholder="vous@exemple.fr"
+                      style={{
+                        width: '100%', padding: '11px 16px', borderRadius: '10px',
+                        border: '1.5px solid #e2e8f0', fontSize: '0.9rem',
+                        fontFamily: "'DM Sans', sans-serif", color: '#0f172a',
+                        background: '#f8fafc', outline: 'none', boxSizing: 'border-box',
+                        transition: 'border-color 0.2s ease',
+                      }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#0ea5e9' }}
+                      onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
+                    />
+                  </div>
+
+                  {/* Champ URL */}
+                  <div style={{ marginBottom: '24px' }}>
+                    <label style={{
+                      display: 'block', fontSize: '0.82rem', fontWeight: 600,
+                      color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px',
+                    }}>
+                      URL de votre site <span style={{ color: '#94a3b8', fontWeight: 400 }}>(optionnel)</span>
+                    </label>
+                    <input
+                      type="url"
+                      value={audit.url}
+                      onChange={e => setAudit(a => ({ ...a, url: e.target.value }))}
+                      placeholder="https://votre-site.fr"
+                      style={{
+                        width: '100%', padding: '11px 16px', borderRadius: '10px',
+                        border: '1.5px solid #e2e8f0', fontSize: '0.9rem',
+                        fontFamily: "'DM Sans', sans-serif", color: '#0f172a',
+                        background: '#f8fafc', outline: 'none', boxSizing: 'border-box',
+                        transition: 'border-color 0.2s ease',
+                      }}
+                      onFocus={e => { e.currentTarget.style.borderColor = '#0ea5e9' }}
+                      onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={auditStatut === 'envoi'}
+                    style={{
+                      width: '100%', padding: '13px', borderRadius: '12px',
+                      background: auditStatut === 'envoi' ? '#94a3b8' : 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                      color: 'white', border: 'none', cursor: auditStatut === 'envoi' ? 'not-allowed' : 'pointer',
+                      fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 700,
+                      boxShadow: auditStatut === 'envoi' ? 'none' : '0 4px 14px rgba(14,165,233,0.35)',
+                      transition: 'all 0.25s ease',
+                    }}
+                  >
+                    {auditStatut === 'envoi' ? 'Envoi en cours…' : 'Demander mon audit gratuit →'}
+                  </button>
+
+                  {auditStatut === 'erreur' && (
+                    <p style={{
+                      color: '#ef4444', fontSize: '0.82rem', textAlign: 'center',
+                      fontFamily: "'DM Sans', sans-serif", marginTop: '12px',
+                    }}>
+                      Une erreur est survenue. Réessayez ou écrivez-nous directement.
+                    </p>
+                  )}
+                </form>
+              )}
+            </div>
+
           </div>
         </div>
       </section>
