@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 // Popup formulaire audit gratuit — déclenchée depuis le header et le hero
 function PopupAudit({ ouvert, onFermer }) {
-  const [form, setForm] = useState({ prenom: '', email: '', url: '' })
+  const [form, setForm] = useState({ prenom: '', email: '', telephone: '', url: '' })
   const [statut, setStatut] = useState('idle') // idle | envoi | ok | erreur
 
   // Bloquer le scroll quand la popup est ouverte
@@ -15,7 +15,7 @@ function PopupAudit({ ouvert, onFermer }) {
   useEffect(() => {
     if (!ouvert) {
       setTimeout(() => {
-        setForm({ prenom: '', email: '', url: '' })
+        setForm({ prenom: '', email: '', telephone: '', url: '' })
         setStatut('idle')
       }, 400)
     }
@@ -33,6 +33,7 @@ function PopupAudit({ ouvert, onFermer }) {
           subject: `🔍 Audit gratuit demandé par ${form.prenom}`,
           from_name: form.prenom,
           email: form.email,
+          telephone: form.telephone || 'Non renseigné',
           url_site: form.url || 'Non renseignée',
           botcheck: '',
         }),
@@ -42,7 +43,7 @@ function PopupAudit({ ouvert, onFermer }) {
       fetch('https://n8n.webotix.cloud/webhook/audit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prenom: form.prenom, email: form.email, url: form.url || '' }),
+        body: JSON.stringify({ prenom: form.prenom, email: form.email, telephone: form.telephone || '', url: form.url || '' }),
       }).catch(() => {})
       setStatut(data.success ? 'ok' : 'erreur')
     } catch {
@@ -208,6 +209,31 @@ function PopupAudit({ ouvert, onFermer }) {
                   placeholder="thomas@monentreprise.fr"
                   value={form.email}
                   onChange={e => setForm(f => ({ ...f, email: e.target.value }))}
+                  style={{
+                    width: '100%', padding: '11px 14px', borderRadius: '10px',
+                    border: '1.5px solid #e2e8f0', outline: 'none',
+                    fontFamily: "'DM Sans', sans-serif", fontSize: '0.9rem', color: '#0f172a',
+                    background: '#fafbff', boxSizing: 'border-box',
+                    transition: 'border-color 0.2s ease',
+                  }}
+                  onFocus={e => { e.currentTarget.style.borderColor = '#22c55e' }}
+                  onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
+                />
+              </div>
+
+              {/* Téléphone */}
+              <div>
+                <label style={{
+                  display: 'block', fontFamily: "'DM Sans', sans-serif",
+                  fontSize: '0.78rem', fontWeight: 600, color: '#374151', marginBottom: '6px',
+                }}>
+                  Votre téléphone <span style={{ color: '#94a3b8', fontWeight: 400 }}>(optionnel)</span>
+                </label>
+                <input
+                  type="tel"
+                  placeholder="06 12 34 56 78"
+                  value={form.telephone}
+                  onChange={e => setForm(f => ({ ...f, telephone: e.target.value }))}
                   style={{
                     width: '100%', padding: '11px 14px', borderRadius: '10px',
                     border: '1.5px solid #e2e8f0', outline: 'none',
