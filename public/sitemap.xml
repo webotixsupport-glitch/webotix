@@ -33,6 +33,14 @@
     <priority>0.8</priority>
   </url>
 
+  <!-- Page Tarifs — packs Starter, Business, Premium -->
+  <url>
+    <loc>https://webotix.cloud/tarifs</loc>
+    <lastmod>2026-04-13</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Mentions légales -->
   <url>
     <loc>https://webotix.cloud/mentions-legales</loc>
