@@ -69,6 +69,7 @@ function PopupAudit({ ouvert, onFermer }) {
       {/* Carte popup — stoppe la propagation du clic */}
       <div
         onClick={e => e.stopPropagation()}
+        className="popup-card"
         style={{
           width: '100%', maxWidth: '480px',
           background: '#fff', borderRadius: '24px',

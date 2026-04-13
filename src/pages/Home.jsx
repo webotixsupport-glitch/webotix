@@ -212,7 +212,7 @@ function Home() {
                 grandir votre entreprise.
               </p>
 
-              <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '44px' }}>
+              <div className="hero-btns" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '44px' }}>
                 {/* Bouton audit gratuit — vert, prioritaire visuellement */}
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('ouvrir-audit'))}

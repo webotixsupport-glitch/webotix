@@ -81,12 +81,29 @@ body {
   .cta-final-inner {
     padding: 48px 24px !important;
   }
+  /* Popup audit — padding réduit sur mobile */
+  .popup-card {
+    padding: 28px 20px !important;
+    border-radius: 18px !important;
+  }
+  /* Boutons hero — pleine largeur sur mobile */
+  .hero-btns {
+    flex-direction: column !important;
+  }
+  .hero-btns > * {
+    width: 100% !important;
+    justify-content: center !important;
+  }
 }
 
 /* Tablette (768px–1023px) : ajustements intermédiaires */
 @media (max-width: 1023px) {
   .hero-badge-float {
     display: none !important;
+  }
+  /* Popup audit — padding légèrement réduit sur tablette */
+  .popup-card {
+    padding: 36px 28px !important;
   }
 }
 

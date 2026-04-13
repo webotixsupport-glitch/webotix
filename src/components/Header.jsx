@@ -222,6 +222,35 @@ function Header() {
         }}
         aria-hidden={!menuOuvert}
       >
+        {/* Bouton audit gratuit — en haut du menu mobile, bien visible */}
+        <button
+          onClick={() => { setMenuOuvert(false); window.dispatchEvent(new CustomEvent('ouvrir-audit')) }}
+          style={{
+            width: '100%', padding: '18px 22px', borderRadius: '16px', border: 'none',
+            background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+            color: '#fff', cursor: 'pointer',
+            fontFamily: "'Outfit', sans-serif", fontSize: '1.1rem', fontWeight: 800,
+            display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+            boxShadow: '0 6px 24px rgba(34,197,94,0.4)',
+            marginBottom: '8px',
+            transition: 'all 0.3s ease',
+            transitionDelay: menuOuvert ? '0.04s' : '0s',
+            transform: menuOuvert ? 'translateX(0) scale(1)' : 'translateX(-24px) scale(0.97)',
+            opacity: menuOuvert ? 1 : 0,
+          }}
+        >
+          <span style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <svg width="18" height="18" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+              <circle cx="10" cy="10" r="8" stroke="white" strokeWidth="2"/>
+              <path d="M10 6v4l3 2" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+            </svg>
+            Audit gratuit — je veux en profiter
+          </span>
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+            <path d="M4 9h10M10 5l4 4-4 4" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+        </button>
+
         {/* Liens de navigation */}
         <nav style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
           {liens.map((l, i) => (
