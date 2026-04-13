@@ -30,7 +30,16 @@ jobs:
       - name: Compiler le site
         run: npm run build
 
-      # 5. Copier les fichiers compiles sur le VPS
+      # 5a. Vider l'ancien dossier avant de copier (évite les fichiers obsolètes)
+      - name: Nettoyer le dossier de deploiement
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_DEPLOY_KEY }}
+          script: rm -rf /var/www/webotix/*
+
+      # 5b. Copier les fichiers compiles sur le VPS
       - name: Deployer sur le VPS
         uses: appleboy/scp-action@v0.1.7
         with:
