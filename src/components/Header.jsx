@@ -63,7 +63,7 @@ function Header() {
           </Link>
 
           {/* Nav desktop — cachée sur mobile */}
-          <nav className="hidden md:flex" style={{ gap: '4px', alignItems: 'center' }}>
+          <nav className="hidden lg:flex" style={{ gap: '4px', alignItems: 'center' }}>
             {liens.map((l) => (
               <Link key={l.href} to={l.href} style={{
                 textDecoration: 'none',
@@ -89,7 +89,7 @@ function Header() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
 
             {/* Bouton audit gratuit — vert, visible desktop */}
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <button
                 onClick={() => window.dispatchEvent(new CustomEvent('ouvrir-audit'))}
                 style={{
@@ -113,7 +113,7 @@ function Header() {
             </div>
 
             {/* CTA desktop — texte + icône */}
-            <div className="hidden md:block">
+            <div className="hidden lg:block">
               <a href="https://calendly.com/webotix-support/30min" target="_blank" rel="noopener noreferrer" style={{
                 textDecoration: 'none',
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
@@ -135,7 +135,7 @@ function Header() {
             </div>
 
             {/* CTA mobile — icône téléphone uniquement */}
-            <div className="flex md:hidden">
+            <div className="flex lg:hidden">
               <a href="https://calendly.com/webotix-support/30min" target="_blank" rel="noopener noreferrer"
                 aria-label="Être rappelé"
                 style={{
@@ -157,7 +157,7 @@ function Header() {
 
             {/* Bouton hamburger — visible uniquement sur mobile */}
             <button
-              className="flex md:hidden"
+              className="flex lg:hidden"
               onClick={() => setMenuOuvert(!menuOuvert)}
               aria-label={menuOuvert ? 'Fermer le menu' : 'Ouvrir le menu'}
               aria-expanded={menuOuvert}
@@ -205,7 +205,7 @@ function Header() {
 
       {/* ─── Menu mobile — panneau plein écran ─── */}
       <div
-        className="md:hidden"
+        className="lg:hidden"
         style={{
           position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
           zIndex: 199,
