@@ -88,6 +88,30 @@ function Header() {
           {/* Groupe droit : CTA + hamburger */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
 
+            {/* Bouton audit gratuit — vert, visible desktop */}
+            <div className="hidden md:block">
+              <button
+                onClick={() => window.dispatchEvent(new CustomEvent('ouvrir-audit'))}
+                style={{
+                  display: 'inline-flex', alignItems: 'center', gap: '7px',
+                  padding: '10px 20px', borderRadius: '12px', border: 'none',
+                  background: '#22c55e', color: '#fff', cursor: 'pointer',
+                  fontSize: '0.85rem', fontWeight: 700,
+                  fontFamily: "'DM Sans', sans-serif",
+                  boxShadow: '0 4px 14px rgba(34,197,94,0.4)',
+                  transition: 'all 0.25s cubic-bezier(0.22,1,0.36,1)',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.background = '#16a34a'; e.currentTarget.style.transform = 'translateY(-1px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = '#22c55e'; e.currentTarget.style.transform = 'translateY(0)' }}
+              >
+                <svg width="13" height="13" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                  <circle cx="10" cy="10" r="8" stroke="white" strokeWidth="2"/>
+                  <path d="M10 6v4l3 2" stroke="white" strokeWidth="2" strokeLinecap="round"/>
+                </svg>
+                Audit gratuit
+              </button>
+            </div>
+
             {/* CTA desktop — texte + icône */}
             <div className="hidden md:block">
               <a href="https://calendly.com/webotix-support/30min" target="_blank" rel="noopener noreferrer" style={{

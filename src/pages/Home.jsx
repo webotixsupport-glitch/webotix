@@ -213,6 +213,25 @@ function Home() {
               </p>
 
               <div style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '44px' }}>
+                {/* Bouton audit gratuit — vert, prioritaire visuellement */}
+                <button
+                  onClick={() => window.dispatchEvent(new CustomEvent('ouvrir-audit'))}
+                  style={{
+                    display: 'inline-flex', alignItems: 'center', gap: '10px',
+                    padding: '14px 28px', borderRadius: '12px', border: 'none',
+                    background: '#22c55e', color: '#fff', cursor: 'pointer',
+                    fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 700,
+                    boxShadow: '0 4px 20px rgba(34,197,94,0.4)',
+                    transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.background = '#16a34a'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                  onMouseLeave={e => { e.currentTarget.style.background = '#22c55e'; e.currentTarget.style.transform = 'translateY(0)' }}
+                >
+                  Demander mon audit gratuit
+                  <span style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <IcoArrow />
+                  </span>
+                </button>
                 <Link to="/contact" style={{
                   textDecoration: 'none',
                   display: 'inline-flex', alignItems: 'center', gap: '10px',
