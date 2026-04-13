@@ -7,6 +7,7 @@ import Home from './pages/Home'
 import About from './pages/About'
 import Contact from './pages/Contact'
 import Tarifs from './pages/Tarifs'
+import Merci from './pages/Merci'
 import MentionsLegales from './pages/MentionsLegales'
 import Services from './pages/Services'
 import NotFound from './pages/NotFound'
@@ -56,6 +57,7 @@ function App() {
             <Route path="/a-propos" element={<About />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/tarifs" element={<Tarifs />} />
+            <Route path="/merci" element={<Merci />} />
             <Route path="/mentions-legales" element={<MentionsLegales />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -27,6 +27,22 @@ const Badge = ({ color, text }) => (
   </div>
 )
 
+// Liens de paiement Stripe — générés via API
+const STRIPE_LINKS = {
+  starter: {
+    mensuel: 'https://buy.stripe.com/9B65kE8GX24pb3v6Ejffy00',
+    annuel:  'https://buy.stripe.com/fZu14o9L1cJ3gnPgeTffy01',
+  },
+  business: {
+    mensuel: 'https://buy.stripe.com/4gM8wQg9p6kF9Zr1jZffy02',
+    annuel:  'https://buy.stripe.com/00wcN64qHcJ3c7z2o3ffy03',
+  },
+  premium: {
+    mensuel: 'https://buy.stripe.com/eVq6oIbT95gB5JbaUzffy04',
+    annuel:  'https://buy.stripe.com/fZu00ke1h8sN8Vn9Qvffy05',
+  },
+}
+
 // Données des 3 packs d'abonnement
 const packs = [
   {
@@ -85,6 +101,12 @@ const packs = [
     exclus: [],
   },
 ]
+
+// Associe chaque pack à ses liens Stripe
+const getStripeLink = (nom, annuel) => {
+  const key = nom.toLowerCase()
+  return annuel ? STRIPE_LINKS[key]?.annuel : STRIPE_LINKS[key]?.mensuel
+}
 
 // Composant carte d'un pack
 function CartePack({ pack, annuel }) {
@@ -201,8 +223,8 @@ function CartePack({ pack, annuel }) {
         ))}
       </div>
 
-      {/* Bouton CTA */}
-      <Link to="/contact" style={{
+      {/* Bouton CTA — redirige vers Stripe */}
+      <a href={getStripeLink(pack.nom, annuel)} target="_blank" rel="noopener noreferrer" style={{
         textDecoration: 'none',
         display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
         padding: '14px 24px', borderRadius: '12px',
@@ -227,7 +249,7 @@ function CartePack({ pack, annuel }) {
       }}
       >
         Choisir ce pack <IcoArrow />
-      </Link>
+      </a>
     </div>
   )
 }
