@@ -48,7 +48,7 @@ const packs = [
   {
     nom: 'Starter',
     sousTitre: "L'essentiel pour être en ligne",
-    prix: { mensuel: 49, annuel: 39 },
+    prix: { mensuel: 69, annuel: 55 },
     accent: '#0ea5e9',
     populaire: false,
     inclus: [
@@ -67,7 +67,7 @@ const packs = [
   {
     nom: 'Business',
     sousTitre: 'Le plus populaire pour grandir',
-    prix: { mensuel: 99, annuel: 79 },
+    prix: { mensuel: 149, annuel: 119 },
     accent: '#6366f1',
     populaire: true,
     inclus: [
@@ -86,7 +86,7 @@ const packs = [
   {
     nom: 'Premium',
     sousTitre: 'Tout inclus, zéro souci',
-    prix: { mensuel: 179, annuel: 143 },
+    prix: { mensuel: 249, annuel: 199 },
     accent: '#f59e0b',
     populaire: false,
     inclus: [
@@ -278,7 +278,7 @@ function Tarifs() {
           <circle cx="14" cy="7.5" r="1" fill="#0ea5e9"/>
         </svg>
       ),
-      prix: '800',
+      prix: '1 200',
       delai: '2 à 4 semaines',
       accent: '#0ea5e9',
       bg: 'linear-gradient(135deg, #eff6ff, #e0f2fe)',
@@ -300,7 +300,7 @@ function Tarifs() {
           <rect x="11" y="6" width="6" height="4" rx="1" stroke="#6366f1" strokeWidth="1.4"/>
         </svg>
       ),
-      prix: '2 000',
+      prix: '3 500',
       delai: '4 à 10 semaines',
       accent: '#6366f1',
       bg: 'linear-gradient(135deg, #f5f3ff, #ede9fe)',
@@ -323,7 +323,7 @@ function Tarifs() {
           <path d="M9 14h5l4-6M14 14h3l2 6" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
         </svg>
       ),
-      prix: '400',
+      prix: '800',
       delai: '1 à 3 semaines',
       accent: '#f59e0b',
       bg: 'linear-gradient(135deg, #fffbeb, #fef3c7)',
