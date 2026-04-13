@@ -1,16 +1,16 @@
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
 
-// 4 projets fictifs crédibles — à remplacer par de vraies réalisations clients
+// 6 projets démo — secteurs variés, chiffres réalistes
 const projets = [
   {
     id: 1,
     categorie: 'Site vitrine',
-    client: 'Atelier Morin',
+    client: 'Artisan Menuisier',
     secteur: 'Menuiserie artisanale — Seine-et-Marne',
     photo: 'https://images.unsplash.com/photo-1504148455328-c376907d081c?w=700&h=480&fit=crop&q=85',
     photoAlt: 'Atelier de menuiserie artisanale avec outils et bois',
-    desc: 'Refonte complète du site vitrine pour un artisan menuisier. Galerie de réalisations, formulaire de contact optimisé et SEO local — pour être trouvé sur Google dans sa zone géographique.',
+    desc: 'Refonte complète du site vitrine avec galerie de réalisations et formulaire de devis optimisé. Référencement local renforcé pour apparaître en premier sur Google dans sa zone.',
     tags: ['Site vitrine', 'Galerie photos', 'SEO local', 'Mobile-first'],
     resultat: '+68% de demandes de devis en 2 mois',
     duree: '2 semaines',
@@ -20,11 +20,11 @@ const projets = [
   {
     id: 2,
     categorie: 'Restaurant & réservation',
-    client: 'La Table des Halles',
-    secteur: 'Restaurant gastronomique — Lyon',
+    client: 'Restaurant Gastronomique',
+    secteur: 'Restauration — Lyon',
     photo: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=700&h=480&fit=crop&q=85',
-    photoAlt: 'Table de restaurant gastronomique avec plat gastronomique',
-    desc: 'Site gastronomique avec présentation du menu, photos ambiance et réservation en ligne intégrée. Le restaurant est désormais complet chaque weekend sans aucun effort de leur part.',
+    photoAlt: 'Table de restaurant gastronomique avec plat raffiné',
+    desc: 'Site avec présentation du menu, photos d'ambiance professionnelles et réservation en ligne intégrée. Zéro appel téléphonique pour les réservations — tout est automatisé.',
     tags: ['Restaurant', 'Réservation en ligne', 'SEO local', 'Photos ambiance'],
     resultat: 'Salle complète tous les weekends',
     duree: '3 semaines',
@@ -33,37 +33,72 @@ const projets = [
   },
   {
     id: 3,
-    categorie: 'Immobilier',
-    client: 'Dumont Immobilier',
-    secteur: 'Agence immobilière — Bordeaux',
+    categorie: 'Agence immobilière',
+    client: 'Agence Immobilière',
+    secteur: 'Immobilier résidentiel — Bordeaux',
     photo: 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=700&h=480&fit=crop&q=85',
     photoAlt: 'Maison moderne avec jardin et architecture contemporaine',
-    desc: 'Plateforme de présentation des biens avec filtres par type, secteur et budget. Formulaire de contact qualifié pour ne recevoir que des demandes sérieuses et ciblées.',
-    tags: ['Immobilier', 'Catalogue', 'Formulaire qualifié', 'SEO'],
-    resultat: '3× plus de contacts vs l\'ancien site',
+    desc: 'Plateforme de présentation des biens avec filtres avancés par type, secteur et budget. Formulaire de contact qualifié — seules les demandes sérieuses arrivent par email.',
+    tags: ['Immobilier', 'Catalogue filtrable', 'Formulaire qualifié', 'SEO'],
+    resultat: '3× plus de contacts qualifiés',
     duree: '3 semaines',
     accent: '#22c55e',
     bg: 'linear-gradient(135deg, #f0fdf4, #dcfce7)',
   },
   {
     id: 4,
-    categorie: 'Personal branding',
-    client: 'Sophie Lambert',
-    secteur: 'Coach bien-être certifiée — Paris',
+    categorie: 'Profession libérale',
+    client: 'Coach & Consultant',
+    secteur: 'Coaching professionnel — Paris',
     photo: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=700&h=480&fit=crop&q=85',
     photoAlt: 'Séance de coaching professionnel en réunion de travail',
-    desc: 'Site personal branding pour coach certifiée. Présentation de l\'approche, témoignages clients authentiques et intégration Calendly pour réserver une séance directement en ligne.',
-    tags: ['Personal branding', 'Calendly', 'SEO', 'Témoignages'],
+    desc: 'Site personal branding avec présentation de l'approche, témoignages clients et prise de rendez-vous Calendly directement intégrée. Plus besoin d'échanger 10 emails pour fixer un créneau.',
+    tags: ['Personal branding', 'Prise de RDV', 'Témoignages', 'SEO'],
     resultat: 'Planning complet 6 semaines à l\'avance',
     duree: '2 semaines',
     accent: '#6366f1',
     bg: 'linear-gradient(135deg, #f5f3ff, #ede9fe)',
   },
+  {
+    id: 5,
+    categorie: 'Boutique en ligne',
+    client: 'Boutique E-commerce',
+    secteur: 'Cosmétiques naturels — Marseille',
+    photo: 'https://images.unsplash.com/photo-1522338242992-e1a54906a8da?w=700&h=480&fit=crop&q=85',
+    photoAlt: 'Produits cosmétiques naturels artisanaux bien présentés',
+    desc: 'Boutique en ligne complète avec catalogue produits, paiement sécurisé et gestion des commandes. Visuels soignés et fiches produits optimisées pour convertir les visiteurs en acheteurs.',
+    tags: ['E-commerce', 'Paiement sécurisé', 'Catalogue produits', 'SEO'],
+    resultat: '+127% de chiffre d\'affaires en ligne en 3 mois',
+    duree: '4 semaines',
+    accent: '#f43f5e',
+    bg: 'linear-gradient(135deg, #fff1f2, #ffe4e6)',
+  },
+  {
+    id: 6,
+    categorie: 'Santé & bien-être',
+    client: 'Cabinet Paramédical',
+    secteur: 'Kinésithérapie — Nantes',
+    photo: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=700&h=480&fit=crop&q=85',
+    photoAlt: 'Cabinet médical moderne et professionnel',
+    desc: 'Site professionnel pour cabinet de kinésithérapie avec présentation des soins, informations pratiques et prise de rendez-vous en ligne. Référencement local optimisé pour la zone de chalandise.',
+    tags: ['Santé', 'Prise de RDV', 'SEO local', 'Mobile-first'],
+    resultat: 'Agenda complet 3 semaines à l\'avance',
+    duree: '2 semaines',
+    accent: '#06b6d4',
+    bg: 'linear-gradient(135deg, #ecfeff, #cffafe)',
+  },
+]
+
+// Statistiques globales de l'agence
+const stats = [
+  { valeur: '12+', label: 'Projets livrés' },
+  { valeur: '98%', label: 'Clients satisfaits' },
+  { valeur: '2 sem.', label: 'Délai moyen' },
+  { valeur: '5★', label: 'Note moyenne' },
 ]
 
 function Realisations() {
 
-  // Titre SEO dynamique
   useEffect(() => {
     document.title = 'Réalisations — Webotix | Sites web & applications créés pour nos clients'
   }, [])
@@ -84,7 +119,6 @@ function Realisations() {
       }}>
         <div style={W}>
 
-          {/* Badge */}
           <div style={{
             display: 'inline-block', padding: '5px 16px', borderRadius: '999px',
             background: '#0ea5e910', border: '1px solid #0ea5e925',
@@ -108,7 +142,8 @@ function Realisations() {
             maxWidth: '540px', margin: '0 auto 40px',
             fontFamily: "'DM Sans', sans-serif",
           }}>
-            Voici quelques projets que nous avons réalisés pour nos clients. Chaque site est unique, pensé pour leur secteur et leurs objectifs.
+            Chaque site est conçu sur-mesure pour le secteur et les objectifs du client.
+            Voici les résultats obtenus.
           </p>
 
           <div style={{ display: 'flex', gap: '12px', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -137,6 +172,45 @@ function Realisations() {
             </Link>
           </div>
 
+        </div>
+      </section>
+
+      {/* ══════════════════════════
+          BANDE STATISTIQUES
+      ══════════════════════════ */}
+      <section style={{ width: '100%', background: '#0f172a', padding: '0 24px' }}>
+        <div style={{
+          ...W,
+          display: 'grid',
+          gridTemplateColumns: 'repeat(4, 1fr)',
+          gap: '0',
+        }}
+        className="stats-grid"
+        >
+          {stats.map((s, i) => (
+            <div key={i} style={{
+              padding: '32px 24px',
+              textAlign: 'center',
+              borderRight: i < stats.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+            }}
+            className="stat-item"
+            >
+              <div style={{
+                fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                fontSize: '2rem', color: '#0ea5e9', lineHeight: 1,
+                marginBottom: '6px',
+              }}>
+                {s.valeur}
+              </div>
+              <div style={{
+                fontFamily: "'DM Sans', sans-serif",
+                fontSize: '0.82rem', color: 'rgba(255,255,255,0.5)',
+                fontWeight: 500,
+              }}>
+                {s.label}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -175,7 +249,6 @@ function Realisations() {
                 {/* Contenu de la carte */}
                 <div style={{ padding: '32px' }}>
 
-                  {/* Badge catégorie */}
                   <div style={{
                     display: 'inline-block', padding: '4px 14px', borderRadius: '999px',
                     background: `${p.accent}15`, border: `1px solid ${p.accent}30`,
@@ -276,7 +349,7 @@ function Realisations() {
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '0 24px 100px', background: 'white' }}>
         <div style={W}>
-          <div style={{
+          <div className="cta-final-inner" style={{
             borderRadius: '24px', padding: '64px 48px', textAlign: 'center',
             background: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 60%, #8b5cf6 100%)',
             boxShadow: '0 24px 80px rgba(14,165,233,0.25)',
