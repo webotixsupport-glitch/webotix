@@ -391,6 +391,195 @@ function Services() {
       ))}
 
       {/* ══════════════════════════
+          WEBOTIX CARE — Aperçu des abonnements
+      ══════════════════════════ */}
+      <section style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
+        <div style={W}>
+
+          {/* En-tête */}
+          <div className="will-animate" style={{ textAlign: 'center', marginBottom: '64px' }}>
+            {badge('#22c55e', 'Webotix Care')}
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+              color: '#0f172a', lineHeight: 1.15, marginBottom: '16px',
+            }}>
+              Et après la livraison ?{' '}
+              <span style={{
+                background: 'linear-gradient(90deg, #0ea5e9, #6366f1)',
+                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+              }}>
+                On reste là.
+              </span>
+            </h2>
+            <p style={{
+              color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
+              maxWidth: '520px', margin: '0 auto',
+              fontFamily: "'DM Sans', sans-serif",
+            }}>
+              Un site livré, c'est un début. Webotix Care, c'est l'abonnement qui assure
+              l'hébergement, la maintenance, le SEO et les mises à jour — pour que votre
+              site reste rapide, sécurisé et à jour, chaque mois.
+            </p>
+          </div>
+
+          {/* 3 cartes packs compactes */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+            gap: '24px', marginBottom: '48px',
+          }}>
+            {[
+              {
+                nom: 'Starter',
+                prix: '49',
+                desc: 'Hébergement, SSL, sauvegardes quotidiennes et support email.',
+                accent: '#0ea5e9',
+                inclus: ['Hébergement VPS', 'SSL + sauvegardes', 'Support email 48h'],
+              },
+              {
+                nom: 'Business',
+                prix: '99',
+                desc: 'Tout Starter + mises à jour de contenu, SEO mensuel et support prioritaire.',
+                accent: '#6366f1',
+                populaire: true,
+                inclus: ['Mises à jour contenu', 'SEO mensuel', 'Support prioritaire 24h'],
+              },
+              {
+                nom: 'Premium',
+                prix: '179',
+                desc: 'Tout inclus, zéro souci : pages illimitées, SEO avancé, support WhatsApp.',
+                accent: '#f59e0b',
+                inclus: ['Pages illimitées', 'SEO avancé', 'Support WhatsApp direct'],
+              },
+            ].map((pack, i) => (
+              <div key={pack.nom} className="will-animate" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <div
+                  style={{
+                    borderRadius: '20px',
+                    padding: '32px 28px',
+                    background: pack.populaire
+                      ? `linear-gradient(145deg, ${pack.accent}08, ${pack.accent}04)`
+                      : '#fff',
+                    border: pack.populaire
+                      ? `2px solid ${pack.accent}40`
+                      : '1px solid #e2e8f0',
+                    boxShadow: pack.populaire
+                      ? `0 12px 40px ${pack.accent}12`
+                      : '0 2px 12px rgba(0,0,0,0.04)',
+                    position: 'relative',
+                    transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
+                    display: 'flex', flexDirection: 'column',
+                  }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = `0 20px 50px ${pack.accent}18, 0 8px 20px rgba(0,0,0,0.06)` }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = pack.populaire ? `0 12px 40px ${pack.accent}12` : '0 2px 12px rgba(0,0,0,0.04)' }}
+                >
+                  {/* Badge populaire */}
+                  {pack.populaire && (
+                    <div style={{
+                      position: 'absolute', top: '-13px', left: '50%',
+                      transform: 'translateX(-50%)',
+                      background: `linear-gradient(90deg, ${pack.accent}, #8b5cf6)`,
+                      color: '#fff', padding: '4px 18px', borderRadius: '999px',
+                      fontSize: '0.68rem', fontWeight: 700,
+                      fontFamily: "'DM Sans', sans-serif",
+                      letterSpacing: '0.06em', textTransform: 'uppercase',
+                      whiteSpace: 'nowrap',
+                      boxShadow: `0 4px 14px ${pack.accent}40`,
+                    }}>
+                      Le plus populaire
+                    </div>
+                  )}
+
+                  {/* Nom + Prix */}
+                  <div style={{ marginBottom: '20px' }}>
+                    <div style={{
+                      display: 'inline-block', padding: '4px 14px', borderRadius: '999px',
+                      background: `${pack.accent}10`, border: `1px solid ${pack.accent}20`,
+                      color: pack.accent, fontSize: '0.7rem', fontWeight: 700,
+                      letterSpacing: '0.08em', textTransform: 'uppercase',
+                      fontFamily: "'DM Sans', sans-serif", marginBottom: '14px',
+                    }}>
+                      {pack.nom}
+                    </div>
+                    <div style={{ display: 'flex', alignItems: 'flex-end', gap: '6px' }}>
+                      <span style={{
+                        fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                        fontSize: '2.4rem', color: pack.accent, lineHeight: 1,
+                      }}>
+                        {pack.prix}€
+                      </span>
+                      <span style={{
+                        color: '#94a3b8', fontSize: '0.85rem',
+                        fontFamily: "'DM Sans', sans-serif", marginBottom: '5px',
+                      }}>
+                        / mois
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Description courte */}
+                  <p style={{
+                    color: '#64748b', fontSize: '0.86rem', lineHeight: 1.65,
+                    fontFamily: "'DM Sans', sans-serif", marginBottom: '20px',
+                  }}>
+                    {pack.desc}
+                  </p>
+
+                  {/* 3 points inclus */}
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '9px', flex: 1 }}>
+                    {pack.inclus.map((item, j) => (
+                      <div key={j} style={{ display: 'flex', alignItems: 'center', gap: '9px' }}>
+                        <svg width="16" height="16" viewBox="0 0 18 18" fill="none" aria-hidden="true" style={{ flexShrink: 0 }}>
+                          <circle cx="9" cy="9" r="9" fill={pack.accent} opacity="0.12"/>
+                          <path d="M5 9l3 3 5-5" stroke={pack.accent} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                        </svg>
+                        <span style={{
+                          color: '#334155', fontSize: '0.82rem',
+                          fontFamily: "'DM Sans', sans-serif",
+                        }}>
+                          {item}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* CTA vers page Tarifs */}
+          <div className="will-animate" style={{ textAlign: 'center', transitionDelay: '0.25s' }}>
+            <Link to="/tarifs" style={{
+              textDecoration: 'none',
+              display: 'inline-flex', alignItems: 'center', gap: '10px',
+              padding: '14px 32px', borderRadius: '14px',
+              background: 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+              color: '#fff',
+              fontFamily: "'Outfit', sans-serif", fontSize: '0.95rem', fontWeight: 700,
+              boxShadow: '0 6px 24px rgba(14,165,233,0.3)',
+              transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 10px 32px rgba(14,165,233,0.4)' }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 6px 24px rgba(14,165,233,0.3)' }}
+            >
+              Voir tous les détails des packs
+              <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                <path d="M2 11L11 2M11 2H4.5M11 2V8.5"/>
+              </svg>
+            </Link>
+            <p style={{
+              marginTop: '12px', color: '#94a3b8',
+              fontSize: '0.78rem', fontFamily: "'DM Sans', sans-serif",
+            }}>
+              Sans engagement · Résiliable à tout moment
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════
           FAQ
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
