@@ -259,48 +259,403 @@ function Tarifs() {
   const [annuel, setAnnuel] = useState(false)
 
   useEffect(() => {
-    document.title = 'Tarifs — Webotix | Abonnement maintenance & gestion de site web'
+    document.title = 'Tarifs — Webotix | Création de site, applications & abonnements maintenance'
     window.scrollTo(0, 0)
   }, [])
 
   const W = { maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }
 
+  // Services de création — tarifs one-shot
+  const creations = [
+    {
+      nom: 'Site web',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect x="2" y="5" width="24" height="18" rx="3" stroke="#0ea5e9" strokeWidth="1.8"/>
+          <path d="M2 10h24" stroke="#0ea5e9" strokeWidth="1.8"/>
+          <circle cx="6" cy="7.5" r="1" fill="#0ea5e9"/>
+          <circle cx="10" cy="7.5" r="1" fill="#0ea5e9"/>
+          <circle cx="14" cy="7.5" r="1" fill="#0ea5e9"/>
+        </svg>
+      ),
+      prix: '800',
+      delai: '2 à 4 semaines',
+      accent: '#0ea5e9',
+      bg: 'linear-gradient(135deg, #eff6ff, #e0f2fe)',
+      types: ['Site vitrine', 'Landing page', 'E-commerce'],
+      inclus: [
+        'Design sur mesure validé avant développement',
+        'Responsive mobile, tablette et desktop',
+        'SEO on-page + formulaire de contact',
+        'Hébergement + mise en ligne inclus',
+        '1 mois de support après livraison',
+      ],
+    },
+    {
+      nom: 'Application',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <rect x="8" y="2" width="12" height="24" rx="3" stroke="#6366f1" strokeWidth="1.8"/>
+          <path d="M11 23h6" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round"/>
+          <rect x="11" y="6" width="6" height="4" rx="1" stroke="#6366f1" strokeWidth="1.4"/>
+        </svg>
+      ),
+      prix: '2 000',
+      delai: '4 à 10 semaines',
+      accent: '#6366f1',
+      bg: 'linear-gradient(135deg, #f5f3ff, #ede9fe)',
+      types: ['App web', 'Dashboard', 'Espace client'],
+      inclus: [
+        'Analyse & maquettes UX/UI validées',
+        'Développement sur mesure (web ou mobile)',
+        'Connexion à vos outils existants',
+        'Tests complets avant livraison',
+        'Formation + documentation',
+      ],
+    },
+    {
+      nom: 'Automatisation',
+      icon: (
+        <svg width="28" height="28" viewBox="0 0 28 28" fill="none">
+          <circle cx="6" cy="14" r="3" stroke="#f59e0b" strokeWidth="1.8"/>
+          <circle cx="22" cy="8" r="3" stroke="#f59e0b" strokeWidth="1.8"/>
+          <circle cx="22" cy="20" r="3" stroke="#f59e0b" strokeWidth="1.8"/>
+          <path d="M9 14h5l4-6M14 14h3l2 6" stroke="#f59e0b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+        </svg>
+      ),
+      prix: '400',
+      delai: '1 à 3 semaines',
+      accent: '#f59e0b',
+      bg: 'linear-gradient(135deg, #fffbeb, #fef3c7)',
+      types: ['Make / Zapier', 'Chatbots IA', 'API'],
+      inclus: [
+        'Audit de vos processus actuels',
+        'Conception + mise en place du workflow',
+        'Connexion entre vos outils',
+        'Tests complets avant production',
+        '30 jours de support après livraison',
+      ],
+    },
+  ]
+
   return (
     <div style={{ width: '100%', background: '#f8f9ff' }}>
 
       {/* ══════════════════════════
-          HERO
+          HERO — Vue d'ensemble des 2 types de tarifs
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '140px 24px 80px', background: 'white' }}>
-        <div style={{ ...W, textAlign: 'center', maxWidth: '760px' }}>
+        <div style={{ ...W, textAlign: 'center', maxWidth: '820px' }}>
           <div className="fade-up">
-            <Badge color="#0ea5e9" text="Webotix Care" />
+            <Badge color="#0ea5e9" text="Nos tarifs" />
           </div>
           <h1 className="fade-up-2" style={{
             fontFamily: "'Outfit', sans-serif", fontWeight: 800,
             fontSize: 'clamp(2.2rem, 5vw, 3.5rem)',
             color: '#0f172a', lineHeight: 1.15, marginBottom: '20px',
           }}>
-            Votre site entre{' '}
+            Des prix clairs,{' '}
             <span style={{
               background: 'linear-gradient(90deg, #0ea5e9, #6366f1)',
               WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
             }}>
-              de bonnes mains.
+              sans surprise.
             </span>
           </h1>
           <p className="fade-up-3" style={{
             color: '#64748b', fontSize: '1.05rem', lineHeight: 1.75,
-            fontFamily: "'DM Sans', sans-serif", marginBottom: '40px',
+            fontFamily: "'DM Sans', sans-serif", marginBottom: '52px',
           }}>
-            Webotix Care, c'est votre abonnement mensuel pour qu'on gère votre site à votre place.
-            Hébergement, mises à jour, SEO, support — on s'occupe de tout.
+            Deux types de services : la <strong style={{ color: '#0f172a' }}>création de votre projet</strong> (paiement unique)
+            et la <strong style={{ color: '#0f172a' }}>maintenance mensuelle</strong> pour qu'on gère votre site
+            à votre place. Devis gratuit, sans engagement.
+          </p>
+
+          {/* Deux blocs de navigation rapide */}
+          <div className="fade-up-3" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 260px), 1fr))',
+            gap: '16px', maxWidth: '600px', margin: '0 auto',
+          }}>
+            {/* Bloc Création */}
+            <a href="#creation" style={{
+              textDecoration: 'none',
+              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+              padding: '24px 28px', borderRadius: '18px',
+              background: 'linear-gradient(135deg, #eff6ff, #e0f2fe)',
+              border: '1px solid rgba(14,165,233,0.2)',
+              transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+              cursor: 'pointer',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(14,165,233,0.15)' }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
+            >
+              <div style={{
+                width: '44px', height: '44px', borderRadius: '12px',
+                background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '14px', boxShadow: '0 4px 12px rgba(14,165,233,0.15)',
+              }}>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <rect x="2" y="4" width="16" height="12" rx="2" stroke="#0ea5e9" strokeWidth="1.8"/>
+                  <path d="M6 10h8M6 13h5" stroke="#0ea5e9" strokeWidth="1.5" strokeLinecap="round"/>
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: '#0f172a', marginBottom: '4px' }}>
+                Création
+              </div>
+              <div style={{ color: '#0ea5e9', fontSize: '0.82rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: '10px' }}>
+                À partir de 400 € · Paiement unique
+              </div>
+              <div style={{ color: '#64748b', fontSize: '0.78rem', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>
+                Site web, application, automatisation — livré clé en main.
+              </div>
+              <div style={{ marginTop: '14px', color: '#0ea5e9', fontSize: '0.78rem', fontWeight: 700, fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', gap: '4px' }}>
+                Voir les tarifs
+                <svg width="12" height="12" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 11L11 2M11 2H4.5M11 2V8.5"/></svg>
+              </div>
+            </a>
+
+            {/* Bloc Maintenance */}
+            <a href="#maintenance" style={{
+              textDecoration: 'none',
+              display: 'flex', flexDirection: 'column', alignItems: 'flex-start',
+              padding: '24px 28px', borderRadius: '18px',
+              background: 'linear-gradient(135deg, #f5f3ff, #ede9fe)',
+              border: '1px solid rgba(99,102,241,0.2)',
+              transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+              cursor: 'pointer',
+            }}
+            onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-4px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(99,102,241,0.15)' }}
+            onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = 'none' }}
+            >
+              <div style={{
+                width: '44px', height: '44px', borderRadius: '12px',
+                background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                marginBottom: '14px', boxShadow: '0 4px 12px rgba(99,102,241,0.15)',
+              }}>
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <path d="M10 2a8 8 0 100 16A8 8 0 0010 2z" stroke="#6366f1" strokeWidth="1.8"/>
+                  <path d="M10 6v4l3 2" stroke="#6366f1" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+              </div>
+              <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.05rem', color: '#0f172a', marginBottom: '4px' }}>
+                Maintenance
+              </div>
+              <div style={{ color: '#6366f1', fontSize: '0.82rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 600, marginBottom: '10px' }}>
+                À partir de 49 €/mois · Sans engagement
+              </div>
+              <div style={{ color: '#64748b', fontSize: '0.78rem', fontFamily: "'DM Sans', sans-serif", lineHeight: 1.5 }}>
+                Hébergement, mises à jour, SEO et support inclus.
+              </div>
+              <div style={{ marginTop: '14px', color: '#6366f1', fontSize: '0.78rem', fontWeight: 700, fontFamily: "'DM Sans', sans-serif", display: 'flex', alignItems: 'center', gap: '4px' }}>
+                Voir les abonnements
+                <svg width="12" height="12" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M2 11L11 2M11 2H4.5M11 2V8.5"/></svg>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ══════════════════════════
+          TARIFS DE CRÉATION — Paiement unique
+      ══════════════════════════ */}
+      <section id="creation" style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
+        <div style={W}>
+
+          {/* En-tête */}
+          <div className="will-animate" style={{ textAlign: 'center', marginBottom: '60px' }}>
+            <Badge color="#0ea5e9" text="Création — Paiement unique" />
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+              fontSize: 'clamp(1.8rem, 3.5vw, 2.8rem)',
+              color: '#0f172a', lineHeight: 1.15, marginBottom: '14px',
+            }}>
+              Votre projet, livré clé en main.
+            </h2>
+            <p style={{
+              color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
+              maxWidth: '520px', margin: '0 auto',
+              fontFamily: "'DM Sans', sans-serif",
+            }}>
+              Un devis détaillé et gratuit pour chaque projet. Les prix ci-dessous sont indicatifs —
+              tout dépend de vos besoins, on s'adapte.
+            </p>
+          </div>
+
+          {/* 3 cartes de création */}
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '24px',
+          }}>
+            {creations.map((srv, i) => (
+              <div key={srv.nom} className="will-animate" style={{ transitionDelay: `${i * 0.08}s` }}>
+                <div style={{
+                  borderRadius: '24px',
+                  background: 'white',
+                  border: '1px solid #e2e8f0',
+                  overflow: 'hidden',
+                  display: 'flex', flexDirection: 'column',
+                  boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
+                  transition: 'all 0.35s cubic-bezier(0.22,1,0.36,1)',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-6px)'; e.currentTarget.style.boxShadow = `0 20px 50px ${srv.accent}15, 0 8px 20px rgba(0,0,0,0.06)` }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 2px 12px rgba(0,0,0,0.04)' }}
+                >
+                  {/* En-tête coloré */}
+                  <div style={{ padding: '32px 32px 24px', background: srv.bg, borderBottom: `1px solid ${srv.accent}12` }}>
+                    <div style={{
+                      width: '52px', height: '52px', borderRadius: '14px',
+                      background: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      marginBottom: '16px', boxShadow: `0 4px 14px ${srv.accent}20`,
+                    }}>
+                      {srv.icon}
+                    </div>
+                    <div style={{
+                      fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                      fontSize: '1.3rem', color: '#0f172a', marginBottom: '8px',
+                    }}>
+                      {srv.nom}
+                    </div>
+                    {/* Tags */}
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px' }}>
+                      {srv.types.map(t => (
+                        <span key={t} style={{
+                          padding: '3px 10px', borderRadius: '999px',
+                          background: 'white', border: `1px solid ${srv.accent}25`,
+                          color: srv.accent, fontSize: '0.72rem', fontWeight: 600,
+                          fontFamily: "'DM Sans', sans-serif",
+                        }}>{t}</span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Corps */}
+                  <div style={{ padding: '28px 32px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                    {/* Prix + délai */}
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '24px', paddingBottom: '20px', borderBottom: '1px solid #f1f5f9' }}>
+                      <div>
+                        <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif", marginBottom: '2px' }}>
+                          À partir de
+                        </div>
+                        <div style={{
+                          fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                          fontSize: '1.9rem', color: srv.accent, lineHeight: 1,
+                        }}>
+                          {srv.prix} €
+                        </div>
+                        <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif", marginTop: '2px' }}>
+                          paiement unique
+                        </div>
+                      </div>
+                      <div style={{ width: '1px', height: '44px', background: '#e2e8f0' }} />
+                      <div>
+                        <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif", marginBottom: '2px' }}>
+                          Délai moyen
+                        </div>
+                        <div style={{
+                          fontFamily: "'Outfit', sans-serif", fontWeight: 700,
+                          fontSize: '1rem', color: '#1e293b',
+                        }}>
+                          {srv.delai}
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Inclus */}
+                    <div style={{ display: 'flex', flexDirection: 'column', gap: '10px', flex: 1, marginBottom: '28px' }}>
+                      {srv.inclus.map((item, j) => (
+                        <div key={j} style={{ display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                          <IcoCheck color={srv.accent} />
+                          <span style={{
+                            color: '#334155', fontSize: '0.855rem', lineHeight: 1.6,
+                            fontFamily: "'DM Sans', sans-serif",
+                          }}>
+                            {item}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+
+                    {/* CTA */}
+                    <Link to="/contact" style={{
+                      textDecoration: 'none',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px',
+                      padding: '13px 20px', borderRadius: '12px',
+                      background: 'transparent',
+                      color: srv.accent,
+                      border: `2px solid ${srv.accent}35`,
+                      fontFamily: "'Outfit', sans-serif", fontSize: '0.9rem', fontWeight: 700,
+                      transition: 'all 0.25s cubic-bezier(0.22,1,0.36,1)',
+                    }}
+                    onMouseEnter={e => { e.currentTarget.style.background = `${srv.accent}10`; e.currentTarget.style.borderColor = `${srv.accent}60`; e.currentTarget.style.transform = 'translateY(-1px)' }}
+                    onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = `${srv.accent}35`; e.currentTarget.style.transform = 'translateY(0)' }}
+                    >
+                      Demander un devis gratuit <IcoArrow />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Note rassurante */}
+          <div className="will-animate" style={{
+            marginTop: '40px', textAlign: 'center',
+            padding: '20px 32px', borderRadius: '14px',
+            background: 'white', border: '1px solid #e2e8f0',
+            display: 'inline-flex', alignItems: 'center', gap: '12px',
+            maxWidth: '100%',
+          }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none" style={{ flexShrink: 0 }}>
+              <circle cx="10" cy="10" r="8" stroke="#22c55e" strokeWidth="1.6"/>
+              <path d="M10 7v3l2 2" stroke="#22c55e" strokeWidth="1.6" strokeLinecap="round"/>
+            </svg>
+            <span style={{ color: '#64748b', fontSize: '0.875rem', fontFamily: "'DM Sans', sans-serif" }}>
+              <strong style={{ color: '#0f172a' }}>Devis gratuit et sans engagement sous 48h.</strong>{' '}
+              On évalue ensemble le périmètre exact avant de chiffrer — pas de mauvaise surprise.
+            </span>
+          </div>
+
+        </div>
+      </section>
+
+      {/* ══════════════════════════
+          WEBOTIX CARE — En-tête de section
+      ══════════════════════════ */}
+      <section id="maintenance" style={{ width: '100%', padding: '100px 24px 40px', background: 'white' }}>
+        <div style={{ ...W, textAlign: 'center', maxWidth: '760px' }}>
+          <div className="will-animate">
+            <Badge color="#6366f1" text="Webotix Care — Maintenance" />
+          </div>
+          <h2 className="will-animate" style={{
+            fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+            fontSize: 'clamp(1.8rem, 4vw, 3rem)',
+            color: '#0f172a', lineHeight: 1.15, marginBottom: '16px',
+            transitionDelay: '0.05s',
+          }}>
+            Votre site entre{' '}
+            <span style={{
+              background: 'linear-gradient(90deg, #6366f1, #8b5cf6)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text',
+            }}>
+              de bonnes mains.
+            </span>
+          </h2>
+          <p className="will-animate" style={{
+            color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
+            fontFamily: "'DM Sans', sans-serif", marginBottom: '40px',
+            transitionDelay: '0.1s',
+          }}>
+            Webotix Care, c'est l'abonnement mensuel sans engagement pour qu'on gère votre site
+            à votre place — hébergement, mises à jour, SEO, support. Résiliable à tout moment.
           </p>
 
           {/* Bouton bascule mensuel / annuel */}
-          <div className="fade-up-3" style={{
+          <div className="will-animate" style={{
             display: 'inline-flex', alignItems: 'center', gap: '16px',
             background: '#f1f5f9', padding: '6px', borderRadius: '14px',
+            transitionDelay: '0.15s',
           }}>
             <button
               onClick={() => setAnnuel(false)}
