@@ -111,6 +111,7 @@ function Home() {
     e.preventDefault()
     setAuditStatut('envoi')
     try {
+      // Envoi à Web3Forms (email de notification)
       const rep = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -124,6 +125,18 @@ function Home() {
         }),
       })
       const data = await rep.json()
+
+      // Envoi à n8n pour notification WhatsApp (sans bloquer si erreur)
+      fetch('https://n8n.webotix.cloud/webhook/audit-form', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          prenom: audit.prenom,
+          email: audit.email,
+          url: audit.url || '',
+        }),
+      }).catch(() => {})
+
       setAuditStatut(data.success ? 'ok' : 'erreur')
     } catch {
       setAuditStatut('erreur')
