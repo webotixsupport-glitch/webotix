@@ -88,6 +88,10 @@ function Contact() {
       })
       const data = await reponse.json()
       if (data.success) {
+        // Signaler la conversion à Google Ads
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'conversion', { send_to: 'AW-18088144429/joRtCNSyk5wcEK3cjLFD' })
+        }
         setEnvoye(true)
       } else {
         setErreur('Une erreur est survenue. Merci de réessayer ou de nous écrire directement.')
