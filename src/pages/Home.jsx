@@ -1,21 +1,28 @@
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 
-// Photos réelles Unsplash — IDs permanents, bien cadrées
+// Photos éditoriales Unsplash — sélection soignée pour un rendu quasi photographique
 const PHOTOS = {
-  hero:   'https://images.unsplash.com/photo-1551434678-e076c223a692?w=900&h=680&fit=crop&q=85',
-  web:    'https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?w=700&h=480&fit=crop&q=85',
+  hero:   'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1000&h=700&fit=crop&q=85',
+  web:    'https://images.unsplash.com/photo-1547658719-da2b51169166?w=700&h=480&fit=crop&q=85',
   app:    'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=700&h=480&fit=crop&q=85',
   auto:   'https://images.unsplash.com/photo-1518770660439-4636190af475?w=700&h=480&fit=crop&q=85',
 }
 
+// Avatars témoignages — confirmés
+const AVATARS = [
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=40&h=40&fit=crop&crop=faces&q=85',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=40&h=40&fit=crop&crop=faces&q=85',
+  'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=faces&q=85',
+]
+
 const IcoArrow = () => (
-  <svg width="13" height="13" viewBox="0 0 13 13" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M2 11L11 2M11 2H4.5M11 2V8.5"/>
+  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+    <path d="M2 12L12 2M12 2H5M12 2V9"/>
   </svg>
 )
 const IcoStar = () => (
-  <svg width="14" height="14" viewBox="0 0 14 14" fill="#f59e0b">
+  <svg width="13" height="13" viewBox="0 0 14 14" fill="#f59e0b">
     <path d="M7 1l1.5 3.2 3.5.5-2.5 2.4.6 3.4L7 9 3.9 10.5l.6-3.4L2 4.7l3.5-.5z"/>
   </svg>
 )
@@ -39,27 +46,27 @@ function Home() {
       desc: 'Sites vitrine, landing pages et e-commerce conçus sur mesure. Design moderne, chargement rapide, bien référencé sur Google. Votre site travaille pour vous 24h/24.',
       tags: ['Site vitrine', 'E-commerce', 'Landing page', 'SEO'],
       photo: PHOTOS.web,
-      photoAlt: 'Designer travaillant sur la création d\'un site web',
+      photoAlt: 'Développeur travaillant sur la conception d\'un site web moderne',
       accent: '#0ea5e9',
-      bgCard: 'linear-gradient(135deg, #eff6ff, #e0f2fe)',
+      bgCard: 'linear-gradient(135deg, #eff6ff 0%, #f0f9ff 100%)',
     },
     {
       titre: 'Applications sur mesure',
       desc: 'Applications web et mobiles pensées pour vos utilisateurs. Dashboard, espace client, app de gestion — on conçoit et on développe du premier écran à la mise en ligne.',
       tags: ['Application web', 'App mobile', 'Dashboard', 'UX/UI'],
       photo: PHOTOS.app,
-      photoAlt: 'Développeur créant une application mobile',
+      photoAlt: 'Application mobile sur smartphone, interface soignée',
       accent: '#6366f1',
-      bgCard: 'linear-gradient(135deg, #f5f3ff, #ede9fe)',
+      bgCard: 'linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%)',
     },
     {
       titre: 'Automatisations',
       desc: 'Workflows intelligents connectés à vos outils. On supprime vos tâches répétitives pour que vous puissiez vous concentrer sur ce qui fait vraiment avancer votre activité.',
       tags: ['Make / Zapier', 'Chatbots', 'Intégrations API', 'Notifications'],
       photo: PHOTOS.auto,
-      photoAlt: 'Système d\'automatisation et connexion d\'outils numériques',
+      photoAlt: 'Système d\'automatisation, connexion d\'outils numériques',
       accent: '#f59e0b',
-      bgCard: 'linear-gradient(135deg, #fffbeb, #fef3c7)',
+      bgCard: 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
     },
   ]
 
@@ -88,19 +95,19 @@ function Home() {
   ]
 
   const etapes = [
-    { num: '01', titre: 'On écoute',   desc: 'Un échange pour comprendre votre projet, vos objectifs et vos contraintes.',               color: '#0ea5e9', bg: 'linear-gradient(135deg, #eff6ff, #e0f2fe)' },
-    { num: '02', titre: 'On conçoit',  desc: 'Maquette et plan technique validés ensemble avant tout développement.',                     color: '#6366f1', bg: 'linear-gradient(135deg, #f5f3ff, #ede9fe)' },
-    { num: '03', titre: 'On construit',desc: 'Développement propre, partagé régulièrement pour que vous suiviez chaque avancée.',        color: '#f59e0b', bg: 'linear-gradient(135deg, #fffbeb, #fef3c7)' },
-    { num: '04', titre: 'On livre',    desc: 'Mise en ligne, formation et support. Vous repartez autonome et confiant.',                  color: '#22c55e', bg: 'linear-gradient(135deg, #f0fdf4, #dcfce7)' },
+    { num: '01', titre: 'On écoute',    desc: 'Un échange pour comprendre votre projet, vos objectifs et vos contraintes.',              color: '#0ea5e9', bg: 'linear-gradient(135deg, #eff6ff, #e0f2fe)' },
+    { num: '02', titre: 'On conçoit',   desc: 'Maquette et plan technique validés ensemble avant tout développement.',                    color: '#6366f1', bg: 'linear-gradient(135deg, #f5f3ff, #ede9fe)' },
+    { num: '03', titre: 'On construit', desc: 'Développement partagé régulièrement pour que vous suiviez chaque avancée.',               color: '#f59e0b', bg: 'linear-gradient(135deg, #fffbeb, #fef3c7)' },
+    { num: '04', titre: 'On livre',     desc: 'Mise en ligne, formation et support. Vous repartez autonome et confiant.',                 color: '#22c55e', bg: 'linear-gradient(135deg, #f0fdf4, #dcfce7)' },
   ]
 
   const avantages = [
-    { txt: 'Livraison dans les délais garantie',        color: '#0ea5e9' },
-    { txt: 'Contact direct avec le développeur',        color: '#6366f1' },
-    { txt: 'Modifications illimitées pendant le projet',color: '#f59e0b' },
-    { txt: 'Accompagnement après la mise en ligne',     color: '#22c55e' },
-    { txt: 'Technologies modernes et performantes',     color: '#0ea5e9' },
-    { txt: 'Devis gratuit sans engagement',             color: '#6366f1' },
+    { txt: 'Livraison dans les délais garantie',         color: '#0ea5e9' },
+    { txt: 'Contact direct avec le développeur',         color: '#6366f1' },
+    { txt: 'Modifications illimitées pendant le projet', color: '#f59e0b' },
+    { txt: 'Accompagnement après la mise en ligne',      color: '#22c55e' },
+    { txt: 'Technologies modernes et performantes',      color: '#0ea5e9' },
+    { txt: 'Devis gratuit sans engagement',              color: '#6366f1' },
   ]
 
   // Formulaire lead magnet — audit gratuit
@@ -111,7 +118,6 @@ function Home() {
     e.preventDefault()
     setAuditStatut('envoi')
     try {
-      // Envoi à Web3Forms (email de notification)
       const rep = await fetch('https://api.web3forms.com/submit', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -126,15 +132,11 @@ function Home() {
       })
       const data = await rep.json()
 
-      // Envoi à n8n pour notification WhatsApp (sans bloquer si erreur)
+      // Notification WhatsApp via n8n
       fetch('https://n8n.webotix.cloud/webhook/audit-form', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          prenom: audit.prenom,
-          email: audit.email,
-          url: audit.url || '',
-        }),
+        body: JSON.stringify({ prenom: audit.prenom, email: audit.email, url: audit.url || '' }),
       }).catch(() => {})
 
       setAuditStatut(data.success ? 'ok' : 'erreur')
@@ -144,6 +146,7 @@ function Home() {
   }
 
   const W = { maxWidth: '1200px', margin: '0 auto', padding: '0 24px' }
+
   const badge = (color, text) => (
     <div style={{
       display: 'inline-block', padding: '5px 16px', borderRadius: '999px',
@@ -160,196 +163,270 @@ function Home() {
     <div style={{ width: '100%', background: '#f8f9ff' }}>
 
       {/* ══════════════════════════
-          HERO
+          HERO — fond sombre éditorial
       ══════════════════════════ */}
       <section style={{
         width: '100%', minHeight: '100dvh',
-        background: 'linear-gradient(150deg, #eef2ff 0%, #f0f9ff 50%, #f8f9ff 100%)',
+        background: 'linear-gradient(140deg, #06091a 0%, #0d1530 55%, #080e20 100%)',
         display: 'flex', alignItems: 'center',
-        padding: '110px 24px 80px',
+        padding: '120px 24px 90px',
         position: 'relative', overflow: 'hidden',
       }}>
-        <div style={{ position: 'absolute', top: '-120px', right: '-120px', width: '600px', height: '600px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(99,102,241,0.1), transparent 70%)', pointerEvents: 'none' }} aria-hidden="true" />
-        <div style={{ position: 'absolute', bottom: '-80px', left: '-80px', width: '500px', height: '500px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(14,165,233,0.09), transparent 70%)', pointerEvents: 'none' }} aria-hidden="true" />
+        {/* Halos lumineux décoratifs */}
+        <div style={{ position: 'absolute', top: '0%', left: '35%', width: '700px', height: '500px', background: 'radial-gradient(ellipse at center, rgba(14,165,233,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} aria-hidden="true" />
+        <div style={{ position: 'absolute', bottom: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(ellipse at center, rgba(99,102,241,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} aria-hidden="true" />
+        {/* Grille de points */}
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.03) 1px, transparent 1px)', backgroundSize: '32px 32px', pointerEvents: 'none' }} aria-hidden="true" />
 
         <div style={{ ...W, width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center' }}>
+          <div className="hero-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '64px', alignItems: 'center' }}>
 
-            {/* Texte gauche */}
+            {/* ─── Colonne gauche : texte ─── */}
             <div className="fade-up">
+              {/* Badge eyebrow */}
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 padding: '6px 16px', borderRadius: '999px',
-                background: 'rgba(14,165,233,0.1)', border: '1px solid rgba(14,165,233,0.25)',
-                color: '#0284c7', fontSize: '0.75rem', fontWeight: 600,
-                letterSpacing: '0.05em', textTransform: 'uppercase',
-                marginBottom: '28px', fontFamily: "'DM Sans', sans-serif",
+                background: 'rgba(14,165,233,0.1)', border: '1px solid rgba(14,165,233,0.22)',
+                color: '#38bdf8', fontSize: '0.72rem', fontWeight: 600,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                marginBottom: '32px', fontFamily: "'DM Sans', sans-serif",
               }}>
-                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0ea5e9', display: 'inline-block' }} />
+                <span style={{ width: 6, height: 6, borderRadius: '50%', background: '#0ea5e9', display: 'inline-block', animation: 'pulse-dot 2s ease-in-out infinite' }} />
                 Agence digitale · France · Depuis 2025
               </div>
 
+              {/* Titre principal — grand et impactant */}
               <h1 style={{
                 fontFamily: "'Outfit', sans-serif", fontWeight: 800,
-                fontSize: 'clamp(2.8rem, 4.5vw, 4.4rem)',
-                color: '#0f172a', lineHeight: 1.08, letterSpacing: '-0.025em',
-                marginBottom: '24px',
+                fontSize: 'clamp(2.8rem, 4.8vw, 5rem)',
+                color: '#f1f5f9', lineHeight: 1.04, letterSpacing: '-0.03em',
+                marginBottom: '28px',
               }}>
                 Votre activité<br />
-                mérite un{' '}
-                <span style={{ color: '#0ea5e9' }}>digital</span><br />
-                à sa hauteur.
+                mérite un web<br />
+                <span style={{
+                  background: 'linear-gradient(90deg, #38bdf8 0%, #818cf8 100%)',
+                  WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                }}>
+                  qui convertit.
+                </span>
               </h1>
 
               <p style={{
-                color: '#475569', fontSize: '1.05rem', lineHeight: 1.8,
-                maxWidth: '440px', marginBottom: '40px',
+                color: 'rgba(241,245,249,0.6)', fontSize: '1.05rem', lineHeight: 1.8,
+                maxWidth: '430px', marginBottom: '44px',
                 fontFamily: "'DM Sans', sans-serif",
               }}>
-                Webotix crée les <strong style={{ color: '#0f172a' }}>sites web</strong>,{' '}
-                <strong style={{ color: '#0f172a' }}>applications</strong> et{' '}
-                <strong style={{ color: '#0f172a' }}>automatisations</strong> qui font
-                grandir votre entreprise.
+                Sites web, applications et automatisations — conçus pour faire
+                grandir votre entreprise. Livraison rapide, résultats concrets.
               </p>
 
-              <div className="hero-btns" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '44px' }}>
-                {/* Bouton audit gratuit — vert, prioritaire visuellement */}
+              {/* Boutons CTA */}
+              <div className="hero-btns" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', marginBottom: '48px' }}>
                 <button
                   onClick={() => window.dispatchEvent(new CustomEvent('ouvrir-audit'))}
                   style={{
                     display: 'inline-flex', alignItems: 'center', gap: '10px',
-                    padding: '14px 28px', borderRadius: '12px', border: 'none',
-                    background: '#22c55e', color: '#fff', cursor: 'pointer',
+                    padding: '15px 28px', borderRadius: '12px', border: 'none',
+                    background: 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                    color: '#fff', cursor: 'pointer',
                     fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 700,
-                    boxShadow: '0 4px 20px rgba(34,197,94,0.4)',
+                    boxShadow: '0 8px 32px rgba(14,165,233,0.35)',
                     transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
                   }}
-                  onMouseEnter={e => { e.currentTarget.style.background = '#16a34a'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                  onMouseLeave={e => { e.currentTarget.style.background = '#22c55e'; e.currentTarget.style.transform = 'translateY(0)' }}
+                  onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(14,165,233,0.5)' }}
+                  onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(14,165,233,0.35)' }}
                 >
-                  Demander mon audit gratuit
-                  <span style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  Audit gratuit
+                  <span style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(255,255,255,0.18)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <IcoArrow />
                   </span>
                 </button>
                 <Link to="/contact" style={{
                   textDecoration: 'none',
                   display: 'inline-flex', alignItems: 'center', gap: '10px',
-                  padding: '14px 28px', borderRadius: '12px',
-                  background: '#0ea5e9', color: '#fff',
-                  fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 700,
-                  boxShadow: '0 4px 20px rgba(14,165,233,0.35)',
-                  transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
+                  padding: '15px 28px', borderRadius: '12px',
+                  background: 'rgba(255,255,255,0.06)',
+                  color: '#f1f5f9',
+                  fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 600,
+                  border: '1px solid rgba(255,255,255,0.12)',
+                  transition: 'all 0.3s ease',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.background = '#0284c7'; e.currentTarget.style.transform = 'translateY(-2px)' }}
-                onMouseLeave={e => { e.currentTarget.style.background = '#0ea5e9'; e.currentTarget.style.transform = 'translateY(0)' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.12)'; e.currentTarget.style.transform = 'translateY(-2px)' }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.06)'; e.currentTarget.style.transform = 'translateY(0)' }}
                 >
                   Demander un devis
-                  <span style={{ width: 26, height: 26, borderRadius: 6, background: 'rgba(255,255,255,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <IcoArrow />
-                  </span>
-                </Link>
-                <Link to="/a-propos" style={{
-                  textDecoration: 'none',
-                  display: 'inline-flex', alignItems: 'center',
-                  padding: '14px 28px', borderRadius: '12px',
-                  background: 'white', color: '#475569',
-                  fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 500,
-                  border: '1px solid #e2e8f0',
-                  boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-                  transition: 'all 0.25s ease',
-                }}
-                onMouseEnter={e => { e.currentTarget.style.color = '#0f172a'; e.currentTarget.style.borderColor = '#cbd5e1' }}
-                onMouseLeave={e => { e.currentTarget.style.color = '#475569'; e.currentTarget.style.borderColor = '#e2e8f0' }}
-                >
-                  Qui sommes-nous ?
                 </Link>
               </div>
 
-              {/* Mini stats */}
-              <div style={{ display: 'flex', gap: '32px', flexWrap: 'wrap' }}>
-                {[
-                  { val: '30+',  label: 'Projets livrés',    color: '#0ea5e9' },
-                  { val: '100%', label: 'Clients satisfaits', color: '#6366f1' },
-                  { val: '24h',  label: 'Délai de réponse',   color: '#f59e0b' },
-                ].map(s => (
-                  <div key={s.label}>
-                    <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.8rem', color: s.color, lineHeight: 1 }}>
-                      {s.val}
-                    </div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.78rem', marginTop: '4px', fontFamily: "'DM Sans', sans-serif" }}>
-                      {s.label}
-                    </div>
+              {/* Preuves sociales — avatars + étoiles */}
+              <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+                <div style={{ display: 'flex' }}>
+                  {AVATARS.map((src, i) => (
+                    <img key={i} src={src} alt=""
+                      style={{ width: 38, height: 38, borderRadius: '50%', objectFit: 'cover', border: '2px solid #06091a', marginLeft: i > 0 ? '-10px' : 0 }} />
+                  ))}
+                </div>
+                <div>
+                  <div style={{ display: 'flex', gap: '2px', marginBottom: '3px' }}>
+                    {[...Array(5)].map((_, i) => <IcoStar key={i} />)}
                   </div>
-                ))}
+                  <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '0.75rem', fontFamily: "'DM Sans', sans-serif", margin: 0 }}>
+                    30+ clients · Satisfaction 100%
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Photo droite */}
+            {/* ─── Colonne droite : navigateur fictif avec photo réelle ─── */}
             <div className="fade-up-2" style={{ position: 'relative' }}>
-              {/* Cadre coloré */}
+              {/* Fenêtre "navigateur" */}
               <div style={{
-                padding: '4px', borderRadius: '24px',
-                background: 'linear-gradient(135deg, #0ea5e9, #6366f1, #f59e0b)',
-                boxShadow: '0 32px 80px rgba(14,165,233,0.18)',
+                background: '#0f1729',
+                borderRadius: '18px', overflow: 'hidden',
+                boxShadow: '0 48px 96px rgba(0,0,0,0.55), 0 0 0 1px rgba(255,255,255,0.07)',
               }}>
-                <div style={{ borderRadius: '21px', overflow: 'hidden', lineHeight: 0 }}>
-                  <img
-                    src={PHOTOS.hero}
-                    alt="Équipe Webotix au travail sur des projets digitaux"
-                    style={{ width: '100%', height: '460px', objectFit: 'cover', display: 'block' }}
-                  />
+                {/* Barre du navigateur */}
+                <div style={{
+                  padding: '12px 18px', background: '#1a2540',
+                  display: 'flex', alignItems: 'center', gap: '12px',
+                  borderBottom: '1px solid rgba(255,255,255,0.05)',
+                }}>
+                  {/* Points de contrôle macOS */}
+                  <div style={{ display: 'flex', gap: '6px', flexShrink: 0 }}>
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#ef4444' }} />
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#f59e0b' }} />
+                    <div style={{ width: 10, height: 10, borderRadius: '50%', background: '#22c55e' }} />
+                  </div>
+                  {/* Barre d'adresse */}
+                  <div style={{
+                    flex: 1, background: 'rgba(255,255,255,0.05)', borderRadius: '6px',
+                    padding: '5px 14px', fontSize: '0.7rem',
+                    color: 'rgba(255,255,255,0.35)', fontFamily: 'monospace',
+                    display: 'flex', alignItems: 'center', gap: '8px',
+                  }}>
+                    <svg width="10" height="10" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                      <path d="M10 1a7 7 0 100 14A7 7 0 0010 1zM3 10h14" stroke="rgba(255,255,255,0.4)" strokeWidth="1.5"/>
+                    </svg>
+                    votre-site.fr
+                  </div>
                 </div>
+                {/* Photo éditoriale */}
+                <img
+                  src={PHOTOS.hero}
+                  alt="Équipe Webotix en réunion stratégique autour d'un projet digital"
+                  style={{ width: '100%', height: '380px', objectFit: 'cover', display: 'block' }}
+                  loading="eager"
+                />
               </div>
 
-              {/* Badge satisfaction */}
+              {/* Badge flottant — livraison */}
               <div className="hero-badge-float" style={{
-                position: 'absolute', bottom: '28px', left: '-24px',
-                background: 'white', borderRadius: '14px',
-                padding: '12px 18px', boxShadow: '0 12px 40px rgba(0,0,0,0.12)',
-                border: '1px solid #f1f5f9',
+                position: 'absolute', bottom: '-20px', left: '-22px',
+                background: '#fff', borderRadius: '14px',
+                padding: '14px 18px', boxShadow: '0 20px 48px rgba(0,0,0,0.18)',
+                display: 'flex', alignItems: 'center', gap: '12px',
+                border: '1px solid rgba(0,0,0,0.06)',
                 animation: 'float 5s ease-in-out infinite',
-                display: 'flex', alignItems: 'center', gap: '10px',
               }}>
-                <div style={{ display: 'flex', gap: '2px' }}>{[1,2,3,4,5].map(s => <IcoStar key={s} />)}</div>
+                <div style={{
+                  width: 38, height: 38, borderRadius: '10px',
+                  background: 'linear-gradient(135deg, #22c55e, #16a34a)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0,
+                }}>
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                    <path d="M9 12l2 2 4-4" stroke="white" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                    <circle cx="12" cy="12" r="9" stroke="white" strokeWidth="2"/>
+                  </svg>
+                </div>
                 <div>
-                  <div style={{ color: '#0f172a', fontWeight: 700, fontSize: '0.82rem', fontFamily: "'DM Sans', sans-serif" }}>100% satisfaits</div>
-                  <div style={{ color: '#94a3b8', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif" }}>30+ projets livrés</div>
+                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '0.82rem', color: '#0f172a', whiteSpace: 'nowrap' }}>Site livré en 2 semaines</div>
+                  <div style={{ fontSize: '0.68rem', color: '#94a3b8', fontFamily: "'DM Sans', sans-serif", marginTop: '2px' }}>Délai moyen pour un vitrine</div>
                 </div>
               </div>
 
-              {/* Badge réponse */}
+              {/* Badge flottant — réponse */}
               <div className="hero-badge-float" style={{
-                position: 'absolute', top: '20px', right: '-18px',
-                background: '#0ea5e9', borderRadius: '12px',
-                padding: '10px 18px', boxShadow: '0 8px 24px rgba(14,165,233,0.4)',
+                position: 'absolute', top: '22px', right: '-18px',
+                background: 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                borderRadius: '12px', padding: '10px 18px',
+                boxShadow: '0 8px 28px rgba(14,165,233,0.45)',
                 animation: 'float 4s ease-in-out infinite 1.5s',
               }}>
-                <div style={{ color: 'white', fontWeight: 700, fontSize: '0.82rem', fontFamily: "'DM Sans', sans-serif" }}>
+                <div style={{ color: 'white', fontWeight: 700, fontSize: '0.78rem', fontFamily: "'DM Sans', sans-serif", whiteSpace: 'nowrap' }}>
                   Réponse sous 24h
                 </div>
               </div>
             </div>
+
           </div>
         </div>
       </section>
 
       {/* ══════════════════════════
-          SERVICES — zig-zag photos réelles
+          STATS — chiffres clés sur fond sombre
+      ══════════════════════════ */}
+      <section style={{
+        width: '100%', padding: '72px 24px',
+        background: 'linear-gradient(90deg, #080e20 0%, #0d1530 100%)',
+        borderBottom: '1px solid rgba(255,255,255,0.05)',
+      }}>
+        <div style={{ ...W, display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(180px, 1fr))', gap: '0' }}>
+          {[
+            { val: '30+',  label: 'Projets livrés',     color: '#38bdf8', desc: 'Sites, apps & automatisations' },
+            { val: '100%', label: 'Clients satisfaits',  color: '#818cf8', desc: 'Zéro projet abandonné' },
+            { val: '2 sem', label: 'Délai moyen',         color: '#fbbf24', desc: 'Pour un site vitrine complet' },
+            { val: '24h',  label: 'Délai de réponse',    color: '#34d399', desc: 'Tous les jours de la semaine' },
+          ].map((s, i) => (
+            <div key={s.label} style={{
+              textAlign: 'center', padding: '20px 16px',
+              borderRight: i < 3 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+            }}>
+              <div style={{
+                fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                fontSize: 'clamp(2.4rem, 4vw, 3.4rem)',
+                color: s.color, lineHeight: 1, marginBottom: '8px',
+                letterSpacing: '-0.02em',
+              }}>
+                {s.val}
+              </div>
+              <div style={{ color: '#f1f5f9', fontSize: '0.85rem', fontWeight: 600, fontFamily: "'DM Sans', sans-serif", marginBottom: '4px' }}>
+                {s.label}
+              </div>
+              <div style={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.72rem', fontFamily: "'DM Sans', sans-serif" }}>
+                {s.desc}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* ══════════════════════════
+          SERVICES — zig-zag avec photos éditoriales
       ══════════════════════════ */}
       <section id="services" style={{ width: '100%', padding: '100px 24px', background: 'white' }}>
         <div style={W}>
-          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '72px' }}>
             {badge('#0ea5e9', 'Nos services')}
-            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#0f172a', lineHeight: 1.15, marginBottom: '16px' }}>
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+              fontSize: 'clamp(2rem, 3.5vw, 3rem)', color: '#0f172a',
+              lineHeight: 1.15, marginBottom: '16px',
+            }}>
               Tout ce dont votre entreprise<br />a besoin pour exister en ligne
             </h2>
-            <p style={{ color: '#64748b', fontSize: '1rem', lineHeight: 1.75, maxWidth: '520px', margin: '0 auto', fontFamily: "'DM Sans', sans-serif" }}>
+            <p style={{
+              color: '#64748b', fontSize: '1rem', lineHeight: 1.75,
+              maxWidth: '520px', margin: '0 auto',
+              fontFamily: "'DM Sans', sans-serif",
+            }}>
               Trois expertises complémentaires, une seule agence. De la conception au lancement.
             </p>
           </div>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
             {services.map((srv, i) => (
               <div key={srv.titre} className="card-lift" style={{
                 borderRadius: '24px',
@@ -358,6 +435,7 @@ function Home() {
                 overflow: 'hidden',
                 display: 'grid',
                 gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+                boxShadow: '0 2px 20px rgba(0,0,0,0.04)',
               }}>
 
                 {/* Texte */}
@@ -366,15 +444,16 @@ function Home() {
                   padding: '52px 48px',
                   display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '20px',
                 }}>
+                  {/* Numéro décoratif */}
                   <div style={{
                     fontFamily: "'Outfit', sans-serif", fontWeight: 900,
-                    fontSize: '3.5rem', color: srv.accent, opacity: 0.15,
+                    fontSize: '3.8rem', color: srv.accent, opacity: 0.13,
                     lineHeight: 1, marginBottom: '-8px',
                   }} aria-hidden="true">
                     {String(i + 1).padStart(2, '0')}
                   </div>
 
-                  <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.6rem', color: '#0f172a' }}>
+                  <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.65rem', color: '#0f172a' }}>
                     {srv.titre}
                   </h3>
 
@@ -388,7 +467,7 @@ function Home() {
                         padding: '5px 14px', borderRadius: '999px',
                         fontSize: '0.75rem', fontWeight: 600,
                         color: srv.accent, background: 'white',
-                        border: `1px solid ${srv.accent}30`,
+                        border: `1px solid ${srv.accent}28`,
                         fontFamily: "'DM Sans', sans-serif",
                         boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
                       }}>
@@ -404,7 +483,7 @@ function Home() {
                     background: srv.accent, color: 'white',
                     fontFamily: "'DM Sans', sans-serif", fontSize: '0.875rem', fontWeight: 700,
                     width: 'fit-content',
-                    boxShadow: `0 4px 14px ${srv.accent}40`,
+                    boxShadow: `0 4px 16px ${srv.accent}38`,
                     transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
                   }}
                   onMouseEnter={e => e.currentTarget.style.transform = 'translateY(-2px)'}
@@ -414,7 +493,7 @@ function Home() {
                   </Link>
                 </div>
 
-                {/* Photo réelle */}
+                {/* Photo réelle Unsplash */}
                 <div style={{
                   order: i % 2 === 0 ? 2 : 1,
                   minHeight: 'clamp(220px, 40vw, 420px)',
@@ -428,15 +507,14 @@ function Home() {
                     style={{
                       width: '100%', height: '100%',
                       objectFit: 'cover', display: 'block',
-                      transition: 'transform 0.6s cubic-bezier(0.22,1,0.36,1)',
+                      transition: 'transform 0.7s cubic-bezier(0.22,1,0.36,1)',
                     }}
-                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.04)'}
+                    onMouseEnter={e => e.currentTarget.style.transform = 'scale(1.05)'}
                     onMouseLeave={e => e.currentTarget.style.transform = 'scale(1)'}
                   />
-                  {/* Overlay coloré léger */}
                   <div style={{
                     position: 'absolute', inset: 0,
-                    background: `linear-gradient(135deg, ${srv.accent}15, transparent)`,
+                    background: `linear-gradient(135deg, ${srv.accent}12, transparent)`,
                     pointerEvents: 'none',
                   }} aria-hidden="true" />
                 </div>
@@ -448,7 +526,7 @@ function Home() {
       </section>
 
       {/* ══════════════════════════
-          AVANTAGES
+          AVANTAGES — ce qui nous distingue
       ══════════════════════════ */}
       <section id="pourquoi" style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
         <div style={W}>
@@ -456,7 +534,11 @@ function Home() {
 
             <div>
               {badge('#6366f1', 'Pourquoi Webotix')}
-              <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(1.8rem, 3vw, 2.5rem)', color: '#0f172a', lineHeight: 1.15, marginBottom: '20px' }}>
+              <h2 style={{
+                fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                fontSize: 'clamp(1.8rem, 3vw, 2.6rem)', color: '#0f172a',
+                lineHeight: 1.15, marginBottom: '20px',
+              }}>
                 Ce qui nous<br /><span style={{ color: '#6366f1' }}>distingue.</span>
               </h2>
               <p style={{ color: '#64748b', fontSize: '0.95rem', lineHeight: 1.75, marginBottom: '32px', fontFamily: "'DM Sans', sans-serif" }}>
@@ -469,7 +551,11 @@ function Home() {
                 background: '#6366f1', color: '#fff',
                 fontFamily: "'DM Sans', sans-serif", fontSize: '0.9rem', fontWeight: 700,
                 boxShadow: '0 4px 16px rgba(99,102,241,0.3)',
-              }}>
+                transition: 'all 0.3s ease',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 8px 28px rgba(99,102,241,0.4)' }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 4px 16px rgba(99,102,241,0.3)' }}
+              >
                 Démarrer un projet <IcoArrow />
               </Link>
             </div>
@@ -482,6 +568,7 @@ function Home() {
                   background: 'white', border: '1px solid #f1f5f9',
                   boxShadow: '0 2px 8px rgba(0,0,0,0.04)',
                   transitionDelay: `${i * 0.07}s`,
+                  cursor: 'default',
                 }}
                 onMouseEnter={e => { e.currentTarget.style.boxShadow = `0 6px 20px ${a.color}18`; e.currentTarget.style.borderColor = `${a.color}25` }}
                 onMouseLeave={e => { e.currentTarget.style.boxShadow = '0 2px 8px rgba(0,0,0,0.04)'; e.currentTarget.style.borderColor = '#f1f5f9' }}
@@ -498,46 +585,47 @@ function Home() {
       </section>
 
       {/* ══════════════════════════
-          PROCESSUS
+          PROCESSUS — 4 étapes
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '100px 24px', background: 'white' }}>
         <div style={W}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
             {badge('#f59e0b', 'Comment on travaille')}
-            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: '#0f172a' }}>
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+              fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: '#0f172a',
+            }}>
               Simple, transparent, <span style={{ color: '#f59e0b' }}>efficace.</span>
             </h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', alignItems: 'start' }}>
-            {etapes.map((e, i) => (
-              <div key={e.num} style={{ position: 'relative' }}>
+            {etapes.map((et, i) => (
+              <div key={et.num} style={{ position: 'relative' }}>
                 <div className="card-lift will-animate" style={{
-                  background: e.bg, borderRadius: '20px',
-                  padding: '32px 28px', border: `1px solid ${e.color}20`,
+                  background: et.bg, borderRadius: '22px',
+                  padding: '36px 28px', border: `1px solid ${et.color}20`,
                   boxShadow: '0 2px 12px rgba(0,0,0,0.04)',
                   transitionDelay: `${i * 0.08}s`,
                 }}>
-                  <div style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 900, fontSize: '4rem', color: e.color, opacity: 0.25, lineHeight: 1, marginBottom: '16px' }} aria-hidden="true">
-                    {e.num}
+                  <div style={{
+                    fontFamily: "'Outfit', sans-serif", fontWeight: 900,
+                    fontSize: '4rem', color: et.color, opacity: 0.22,
+                    lineHeight: 1, marginBottom: '18px',
+                  }} aria-hidden="true">
+                    {et.num}
                   </div>
                   <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 700, fontSize: '1.15rem', color: '#0f172a', marginBottom: '10px' }}>
-                    {e.titre}
+                    {et.titre}
                   </h3>
                   <p style={{ color: '#64748b', fontSize: '0.875rem', lineHeight: 1.7, fontFamily: "'DM Sans', sans-serif" }}>
-                    {e.desc}
+                    {et.desc}
                   </p>
-                  <div style={{ width: '32px', height: '3px', borderRadius: '2px', background: e.color, marginTop: '20px' }} />
+                  <div style={{ width: '32px', height: '3px', borderRadius: '2px', background: et.color, marginTop: '22px' }} />
                 </div>
-                {/* Flèche entre les étapes — visible uniquement sur desktop (masquée via style inline conditionnel) */}
                 {i < etapes.length - 1 && (
-                  <div style={{
-                    display: 'none',
-                    position: 'absolute', top: '50%', right: '-18px',
-                    transform: 'translateY(-50%)', zIndex: 2,
-                  }}
-                  className="etape-fleche"
-                  aria-hidden="true">
+                  <div style={{ display: 'none', position: 'absolute', top: '50%', right: '-18px', transform: 'translateY(-50%)', zIndex: 2 }}
+                    className="etape-fleche" aria-hidden="true">
                     <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#cbd5e1" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <polyline points="9 18 15 12 9 6" />
                     </svg>
@@ -550,51 +638,81 @@ function Home() {
       </section>
 
       {/* ══════════════════════════
-          TÉMOIGNAGES
+          TÉMOIGNAGES — style éditorial premium
       ══════════════════════════ */}
-      <section id="temoignages" style={{ width: '100%', padding: '100px 24px', background: '#f8f9ff' }}>
-        <div style={W}>
-          <div style={{ textAlign: 'center', marginBottom: '60px' }}>
-            {badge('#0ea5e9', 'Ils nous font confiance')}
-            <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: '#0f172a' }}>
-              Nos clients <span style={{ color: '#0ea5e9' }}>parlent</span> pour nous
+      <section id="temoignages" style={{
+        width: '100%', padding: '100px 24px',
+        background: 'linear-gradient(140deg, #06091a 0%, #0d1530 100%)',
+        position: 'relative', overflow: 'hidden',
+      }}>
+        {/* Halo décoratif */}
+        <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '800px', height: '600px', background: 'radial-gradient(ellipse, rgba(99,102,241,0.06) 0%, transparent 70%)', pointerEvents: 'none' }} aria-hidden="true" />
+
+        <div style={{ ...W, position: 'relative', zIndex: 1 }}>
+          <div style={{ textAlign: 'center', marginBottom: '64px' }}>
+            <div style={{
+              display: 'inline-block', padding: '5px 16px', borderRadius: '999px',
+              background: 'rgba(14,165,233,0.1)', border: '1px solid rgba(14,165,233,0.22)',
+              color: '#38bdf8', fontSize: '0.72rem', fontWeight: 600,
+              letterSpacing: '0.08em', textTransform: 'uppercase',
+              marginBottom: '16px', fontFamily: "'DM Sans', sans-serif",
+            }}>
+              Ils nous font confiance
+            </div>
+            <h2 style={{
+              fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+              fontSize: 'clamp(2rem, 3.5vw, 2.8rem)', color: '#f1f5f9',
+            }}>
+              Nos clients{' '}
+              <span style={{ background: 'linear-gradient(90deg, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                parlent
+              </span>{' '}
+              pour nous
             </h2>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
             {temoignages.map((t, i) => (
-              <div key={t.nom} className="card-lift" style={{
-                background: `linear-gradient(135deg, ${t.accent}08, ${t.accent}04)`,
+              <div key={t.nom} style={{
+                background: 'rgba(255,255,255,0.04)',
                 borderRadius: '20px',
-                padding: '32px', border: `1px solid ${t.accent}18`,
+                padding: '36px',
+                border: '1px solid rgba(255,255,255,0.08)',
                 borderTop: `3px solid ${t.accent}`,
-                boxShadow: '0 2px 16px rgba(0,0,0,0.05)',
-                animation: `fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) ${i*0.1}s both`,
                 position: 'relative', overflow: 'hidden',
+                animation: `fadeUp 0.5s cubic-bezier(0.22,1,0.36,1) ${i * 0.1}s both`,
+                backdropFilter: 'blur(8px)',
+                WebkitBackdropFilter: 'blur(8px)',
               }}>
-                {/* Guillemet décoratif en arrière-plan */}
+                {/* Grand guillemet décoratif */}
                 <div style={{
-                  position: 'absolute', top: '12px', right: '20px',
-                  fontFamily: 'Georgia, serif', fontSize: '7rem', lineHeight: 1,
-                  color: t.accent, opacity: 0.07, userSelect: 'none',
-                  pointerEvents: 'none',
+                  position: 'absolute', top: '10px', right: '20px',
+                  fontFamily: 'Georgia, serif', fontSize: '8rem', lineHeight: 1,
+                  color: t.accent, opacity: 0.09, userSelect: 'none', pointerEvents: 'none',
                 }} aria-hidden="true">"</div>
 
-                <div style={{ display: 'flex', gap: '3px', marginBottom: '20px', position: 'relative' }}>
+                <div style={{ display: 'flex', gap: '3px', marginBottom: '22px' }}>
                   {[1,2,3,4,5].map(s => <IcoStar key={s} />)}
                 </div>
 
-                <p style={{ color: '#475569', fontSize: '0.925rem', lineHeight: 1.8, marginBottom: '24px', fontFamily: "'DM Sans', sans-serif", fontStyle: 'italic', position: 'relative' }}>
+                <p style={{
+                  color: 'rgba(241,245,249,0.75)', fontSize: '0.925rem', lineHeight: 1.85,
+                  marginBottom: '28px', fontFamily: "'DM Sans', sans-serif",
+                  fontStyle: 'italic', position: 'relative',
+                }}>
                   "{t.texte}"
                 </p>
 
-                <div style={{ display: 'flex', alignItems: 'center', gap: '12px', paddingTop: '20px', borderTop: `1px solid ${t.accent}15` }}>
+                <div style={{
+                  display: 'flex', alignItems: 'center', gap: '14px',
+                  paddingTop: '20px', borderTop: '1px solid rgba(255,255,255,0.08)',
+                }}>
                   <img src={t.avatar} alt={`Photo de ${t.nom}`}
                     loading="lazy"
-                    style={{ width: '44px', height: '44px', borderRadius: '50%', flexShrink: 0, border: `2px solid ${t.accent}40` }} />
+                    style={{ width: '46px', height: '46px', borderRadius: '50%', flexShrink: 0, border: `2px solid ${t.accent}50` }} />
                   <div>
-                    <div style={{ color: '#0f172a', fontWeight: 600, fontSize: '0.875rem', fontFamily: "'DM Sans', sans-serif" }}>{t.nom}</div>
-                    <div style={{ color: '#94a3b8', fontSize: '0.78rem', marginTop: '2px', fontFamily: "'DM Sans', sans-serif" }}>{t.poste}</div>
+                    <div style={{ color: '#f1f5f9', fontWeight: 600, fontSize: '0.875rem', fontFamily: "'DM Sans', sans-serif" }}>{t.nom}</div>
+                    <div style={{ color: 'rgba(255,255,255,0.35)', fontSize: '0.75rem', marginTop: '2px', fontFamily: "'DM Sans', sans-serif" }}>{t.poste}</div>
                   </div>
                 </div>
               </div>
@@ -628,13 +746,13 @@ function Home() {
                 color: '#64748b', fontSize: '1rem', lineHeight: 1.8,
                 fontFamily: "'DM Sans', sans-serif", marginBottom: '28px',
               }}>
-                On analyse votre site web gratuitement — design, vitesse, SEO, et ce qui bloque vos visiteurs. Vous recevez un rapport clair et honnête sous 48h.
+                On analyse votre site gratuitement — design, vitesse, SEO, et ce qui bloque vos visiteurs. Vous recevez un rapport clair et honnête sous 48h.
               </p>
               <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {[
-                  { txt: 'Analyse SEO et visibilité Google', color: '#0ea5e9' },
-                  { txt: 'Audit design et expérience mobile', color: '#6366f1' },
-                  { txt: 'Rapport détaillé sous 48h, sans engagement', color: '#22c55e' },
+                  { txt: 'Analyse SEO et visibilité Google',            color: '#0ea5e9' },
+                  { txt: 'Audit design et expérience mobile',           color: '#6366f1' },
+                  { txt: 'Rapport détaillé sous 48h, sans engagement',  color: '#22c55e' },
                 ].map(({ txt, color }) => (
                   <div key={txt} style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                     <div style={{
@@ -645,9 +763,7 @@ function Home() {
                         <path d="M2 6l3 3 5-5" stroke={color} strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                       </svg>
                     </div>
-                    <span style={{ color: '#475569', fontSize: '0.92rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>
-                      {txt}
-                    </span>
+                    <span style={{ color: '#475569', fontSize: '0.92rem', fontFamily: "'DM Sans', sans-serif", fontWeight: 500 }}>{txt}</span>
                   </div>
                 ))}
               </div>
@@ -679,25 +795,16 @@ function Home() {
                 </div>
               ) : (
                 <form onSubmit={envoyerAudit}>
-                  <h3 style={{
-                    fontFamily: "'Outfit', sans-serif", fontWeight: 800,
-                    fontSize: '1.3rem', color: '#0f172a', marginBottom: '6px',
-                  }}>
+                  <h3 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: '1.3rem', color: '#0f172a', marginBottom: '6px' }}>
                     Audit gratuit de votre site
                   </h3>
-                  <p style={{
-                    color: '#94a3b8', fontSize: '0.85rem',
-                    fontFamily: "'DM Sans', sans-serif", marginBottom: '28px',
-                  }}>
+                  <p style={{ color: '#94a3b8', fontSize: '0.85rem', fontFamily: "'DM Sans', sans-serif", marginBottom: '28px' }}>
                     Réponse sous 48h · Sans engagement
                   </p>
 
                   {/* Champ prénom */}
                   <div style={{ marginBottom: '16px' }}>
-                    <label style={{
-                      display: 'block', fontSize: '0.82rem', fontWeight: 600,
-                      color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px',
-                    }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px' }}>
                       Votre prénom *
                     </label>
                     <input
@@ -705,13 +812,7 @@ function Home() {
                       value={audit.prenom}
                       onChange={e => setAudit(a => ({ ...a, prenom: e.target.value }))}
                       placeholder="Ex : Marc"
-                      style={{
-                        width: '100%', padding: '11px 16px', borderRadius: '10px',
-                        border: '1.5px solid #e2e8f0', fontSize: '0.9rem',
-                        fontFamily: "'DM Sans', sans-serif", color: '#0f172a',
-                        background: '#f8fafc', outline: 'none', boxSizing: 'border-box',
-                        transition: 'border-color 0.2s ease',
-                      }}
+                      style={{ width: '100%', padding: '11px 16px', borderRadius: '10px', border: '1.5px solid #e2e8f0', fontSize: '0.9rem', fontFamily: "'DM Sans', sans-serif", color: '#0f172a', background: '#f8fafc', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s ease' }}
                       onFocus={e => { e.currentTarget.style.borderColor = '#0ea5e9' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
                     />
@@ -719,10 +820,7 @@ function Home() {
 
                   {/* Champ email */}
                   <div style={{ marginBottom: '16px' }}>
-                    <label style={{
-                      display: 'block', fontSize: '0.82rem', fontWeight: 600,
-                      color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px',
-                    }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px' }}>
                       Votre email *
                     </label>
                     <input
@@ -730,13 +828,7 @@ function Home() {
                       value={audit.email}
                       onChange={e => setAudit(a => ({ ...a, email: e.target.value }))}
                       placeholder="vous@exemple.fr"
-                      style={{
-                        width: '100%', padding: '11px 16px', borderRadius: '10px',
-                        border: '1.5px solid #e2e8f0', fontSize: '0.9rem',
-                        fontFamily: "'DM Sans', sans-serif", color: '#0f172a',
-                        background: '#f8fafc', outline: 'none', boxSizing: 'border-box',
-                        transition: 'border-color 0.2s ease',
-                      }}
+                      style={{ width: '100%', padding: '11px 16px', borderRadius: '10px', border: '1.5px solid #e2e8f0', fontSize: '0.9rem', fontFamily: "'DM Sans', sans-serif", color: '#0f172a', background: '#f8fafc', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s ease' }}
                       onFocus={e => { e.currentTarget.style.borderColor = '#0ea5e9' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
                     />
@@ -744,10 +836,7 @@ function Home() {
 
                   {/* Champ URL */}
                   <div style={{ marginBottom: '24px' }}>
-                    <label style={{
-                      display: 'block', fontSize: '0.82rem', fontWeight: 600,
-                      color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px',
-                    }}>
+                    <label style={{ display: 'block', fontSize: '0.82rem', fontWeight: 600, color: '#374151', fontFamily: "'DM Sans', sans-serif", marginBottom: '6px' }}>
                       URL de votre site <span style={{ color: '#94a3b8', fontWeight: 400 }}>(optionnel)</span>
                     </label>
                     <input
@@ -755,13 +844,7 @@ function Home() {
                       value={audit.url}
                       onChange={e => setAudit(a => ({ ...a, url: e.target.value }))}
                       placeholder="https://votre-site.fr"
-                      style={{
-                        width: '100%', padding: '11px 16px', borderRadius: '10px',
-                        border: '1.5px solid #e2e8f0', fontSize: '0.9rem',
-                        fontFamily: "'DM Sans', sans-serif", color: '#0f172a',
-                        background: '#f8fafc', outline: 'none', boxSizing: 'border-box',
-                        transition: 'border-color 0.2s ease',
-                      }}
+                      style={{ width: '100%', padding: '11px 16px', borderRadius: '10px', border: '1.5px solid #e2e8f0', fontSize: '0.9rem', fontFamily: "'DM Sans', sans-serif", color: '#0f172a', background: '#f8fafc', outline: 'none', boxSizing: 'border-box', transition: 'border-color 0.2s ease' }}
                       onFocus={e => { e.currentTarget.style.borderColor = '#0ea5e9' }}
                       onBlur={e => { e.currentTarget.style.borderColor = '#e2e8f0' }}
                     />
@@ -783,10 +866,7 @@ function Home() {
                   </button>
 
                   {auditStatut === 'erreur' && (
-                    <p style={{
-                      color: '#ef4444', fontSize: '0.82rem', textAlign: 'center',
-                      fontFamily: "'DM Sans', sans-serif", marginTop: '12px',
-                    }}>
+                    <p style={{ color: '#ef4444', fontSize: '0.82rem', textAlign: 'center', fontFamily: "'DM Sans', sans-serif", marginTop: '12px' }}>
                       Une erreur est survenue. Réessayez ou écrivez-nous directement.
                     </p>
                   )}
@@ -799,36 +879,52 @@ function Home() {
       </section>
 
       {/* ══════════════════════════
-          CTA FINAL
+          CTA FINAL — fond sombre assorti au hero
       ══════════════════════════ */}
       <section style={{ width: '100%', padding: '100px 24px 120px', background: 'white' }}>
         <div style={W}>
           <div className="cta-final-inner" style={{
-            borderRadius: '28px', padding: '72px 64px',
-            background: 'linear-gradient(135deg, #0ea5e9 0%, #6366f1 60%, #8b5cf6 100%)',
+            borderRadius: '28px', padding: '80px 64px',
+            background: 'linear-gradient(140deg, #06091a 0%, #0d1530 60%, #080e20 100%)',
             position: 'relative', overflow: 'hidden', textAlign: 'center',
-            boxShadow: '0 24px 80px rgba(14,165,233,0.25)',
+            boxShadow: '0 32px 80px rgba(0,0,0,0.25)',
+            border: '1px solid rgba(255,255,255,0.06)',
           }}>
-            <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '320px', height: '320px', borderRadius: '50%', background: 'rgba(255,255,255,0.08)', pointerEvents: 'none' }} aria-hidden="true" />
-            <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '260px', height: '260px', borderRadius: '50%', background: 'rgba(255,255,255,0.06)', pointerEvents: 'none' }} aria-hidden="true" />
+            {/* Halos */}
+            <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: '700px', height: '400px', background: 'radial-gradient(ellipse, rgba(14,165,233,0.08) 0%, transparent 70%)', pointerEvents: 'none' }} aria-hidden="true" />
+            <div style={{ position: 'absolute', top: '-80px', right: '-80px', width: '300px', height: '300px', borderRadius: '50%', background: 'rgba(99,102,241,0.06)', pointerEvents: 'none' }} aria-hidden="true" />
+            <div style={{ position: 'absolute', bottom: '-60px', left: '-60px', width: '260px', height: '260px', borderRadius: '50%', background: 'rgba(14,165,233,0.05)', pointerEvents: 'none' }} aria-hidden="true" />
+            {/* Grille de points */}
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: 'radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px)', backgroundSize: '28px 28px', pointerEvents: 'none' }} aria-hidden="true" />
 
             <div style={{ position: 'relative', zIndex: 1 }}>
               <div style={{
                 display: 'inline-flex', alignItems: 'center', gap: '8px',
                 padding: '6px 16px', borderRadius: '999px',
-                background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.25)',
-                color: 'white', fontSize: '0.75rem', fontWeight: 600,
-                letterSpacing: '0.05em', textTransform: 'uppercase',
-                marginBottom: '24px', fontFamily: "'DM Sans', sans-serif",
+                background: 'rgba(14,165,233,0.1)', border: '1px solid rgba(14,165,233,0.22)',
+                color: '#38bdf8', fontSize: '0.72rem', fontWeight: 600,
+                letterSpacing: '0.08em', textTransform: 'uppercase',
+                marginBottom: '28px', fontFamily: "'DM Sans', sans-serif",
               }}>
                 Première consultation gratuite
               </div>
 
-              <h2 style={{ fontFamily: "'Outfit', sans-serif", fontWeight: 800, fontSize: 'clamp(2rem, 4vw, 3.5rem)', color: 'white', lineHeight: 1.15, marginBottom: '20px' }}>
-                Votre projet mérite mieux<br />qu'un template.
+              <h2 style={{
+                fontFamily: "'Outfit', sans-serif", fontWeight: 800,
+                fontSize: 'clamp(2rem, 4vw, 3.6rem)', color: '#f1f5f9',
+                lineHeight: 1.1, marginBottom: '20px',
+              }}>
+                Votre projet mérite mieux<br />
+                <span style={{ background: 'linear-gradient(90deg, #38bdf8, #818cf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text' }}>
+                  qu'un template.
+                </span>
               </h2>
 
-              <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.05rem', lineHeight: 1.75, maxWidth: '460px', margin: '0 auto 40px', fontFamily: "'DM Sans', sans-serif" }}>
+              <p style={{
+                color: 'rgba(241,245,249,0.55)', fontSize: '1.05rem', lineHeight: 1.75,
+                maxWidth: '460px', margin: '0 auto 44px',
+                fontFamily: "'DM Sans', sans-serif",
+              }}>
                 Parlez-nous de votre idée. On vous répond honnêtement sur ce qu'on peut créer ensemble.
               </p>
 
@@ -836,27 +932,29 @@ function Home() {
                 <Link to="/contact" style={{
                   textDecoration: 'none',
                   display: 'inline-flex', alignItems: 'center', gap: '10px',
-                  padding: '14px 32px', borderRadius: '12px',
-                  background: 'white', color: '#0f172a',
+                  padding: '15px 34px', borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                  color: '#fff',
                   fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 700,
-                  boxShadow: '0 8px 28px rgba(0,0,0,0.15)',
+                  boxShadow: '0 8px 32px rgba(14,165,233,0.35)',
                   transition: 'all 0.3s cubic-bezier(0.22,1,0.36,1)',
                 }}
-                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)' }}
-                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)' }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 40px rgba(14,165,233,0.5)' }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.boxShadow = '0 8px 32px rgba(14,165,233,0.35)' }}
                 >
                   Discutons de mon projet <IcoArrow />
                 </Link>
                 <Link to="/a-propos" style={{
                   textDecoration: 'none',
                   display: 'inline-flex', alignItems: 'center',
-                  padding: '14px 32px', borderRadius: '12px',
-                  background: 'rgba(255,255,255,0.15)', border: '1px solid rgba(255,255,255,0.3)',
-                  color: 'white', fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 500,
+                  padding: '15px 34px', borderRadius: '12px',
+                  background: 'rgba(255,255,255,0.07)', border: '1px solid rgba(255,255,255,0.14)',
+                  color: 'rgba(241,245,249,0.75)',
+                  fontFamily: "'DM Sans', sans-serif", fontSize: '0.95rem', fontWeight: 500,
                   transition: 'all 0.25s ease',
                 }}
-                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.25)'}
-                onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.15)'}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.07)'}
                 >
                   En savoir plus
                 </Link>
@@ -867,7 +965,7 @@ function Home() {
       </section>
 
       <style>{`
-        @media (max-width: 768px) {
+        @media (max-width: 767px) {
           .hero-grid { grid-template-columns: 1fr !important; gap: 40px !important; }
         }
       `}</style>
