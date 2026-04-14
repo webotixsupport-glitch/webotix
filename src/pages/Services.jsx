@@ -432,14 +432,14 @@ function Services() {
             {[
               {
                 nom: 'Starter',
-                prix: '49',
+                prix: '69',
                 desc: 'Hébergement, SSL, sauvegardes quotidiennes et support email.',
                 accent: '#0ea5e9',
                 inclus: ['Hébergement VPS', 'SSL + sauvegardes', 'Support email 48h'],
               },
               {
                 nom: 'Business',
-                prix: '99',
+                prix: '149',
                 desc: 'Tout Starter + mises à jour de contenu, SEO mensuel et support prioritaire.',
                 accent: '#6366f1',
                 populaire: true,
@@ -447,7 +447,7 @@ function Services() {
               },
               {
                 nom: 'Premium',
-                prix: '179',
+                prix: '249',
                 desc: 'Tout inclus, zéro souci : pages illimitées, SEO avancé, support WhatsApp.',
                 accent: '#f59e0b',
                 inclus: ['Pages illimitées', 'SEO avancé', 'Support WhatsApp direct'],
