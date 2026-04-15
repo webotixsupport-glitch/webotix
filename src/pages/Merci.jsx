@@ -6,6 +6,15 @@ function Merci() {
   useEffect(() => {
     document.title = 'Merci — Webotix | Abonnement confirmé'
     window.scrollTo(0, 0)
+
+    // Tracking conversion Google Ads — abonnement confirmé
+    if (typeof gtag === 'function') {
+      gtag('event', 'conversion', {
+        'send_to': 'AW-18088144429/BmcvCJyVg5wcEK3cjLFD',
+        'value': 1.0,
+        'currency': 'EUR'
+      })
+    }
   }, [])
 
   return (
